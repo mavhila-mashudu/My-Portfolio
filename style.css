@@ -313,6 +313,9 @@ button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .nav-link {
@@ -432,7 +435,14 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-top: 2rem;
+    padding: 0;
+    margin: 2rem 0 0;
+    list-style: none;
+}
+
+.hero-actions li,
+.project-actions li {
+    display: flex;
 }
 
 .btn {
@@ -555,10 +565,12 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 0.65rem;
-    margin-top: 1rem;
+    padding: 0;
+    margin: 1rem 0 0;
+    list-style: none;
 }
 
-.chip-row span {
+.chip-row li {
     padding: 0.55rem 0.9rem;
     border-radius: 999px;
     border: 1px solid rgba(108, 242, 212, 0.18);
@@ -622,10 +634,12 @@ button {
 .about-highlights {
     display: grid;
     gap: 1rem;
-    margin-top: 1.5rem;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    list-style: none;
 }
 
-.about-highlights div {
+.about-highlights li {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1rem;
@@ -761,15 +775,16 @@ button {
 }
 
 .skill-group-heading {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.55rem 1rem;
+    align-items: end;
 }
 
 .skill-group-heading h3 {
     margin: 0;
     font-size: 1.45rem;
+    grid-column: 1;
 }
 
 .skill-group-heading p {
@@ -777,6 +792,7 @@ button {
     color: var(--text-secondary);
     line-height: 1.75;
     max-width: 58ch;
+    grid-column: 1;
 }
 
 .skill-group-count {
@@ -786,10 +802,16 @@ button {
     font-size: 0.9rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
 }
 
 .skills-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .skill-card,
@@ -799,9 +821,13 @@ button {
 }
 
 .skill-title {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "title percent"
+        "level percent";
+    gap: 0.35rem 1rem;
+    align-items: start;
     margin-bottom: 1rem;
 }
 
@@ -812,6 +838,11 @@ button {
     font-size: 1.35rem;
 }
 
+.skill-title h3 {
+    grid-area: title;
+    margin-bottom: 0;
+}
+
 .skill-title p,
 .project-card p,
 .timeline-item p {
@@ -820,7 +851,13 @@ button {
     line-height: 1.75;
 }
 
+.skill-title p {
+    grid-area: level;
+    line-height: 1.5;
+}
+
 .skill-title span {
+    grid-area: percent;
     color: var(--accent);
     font-family: var(--font-mono);
 }
@@ -852,7 +889,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 0.65rem;
-    margin-top: 1rem;
+    margin: 1rem 0 0;
 }
 
 .skill-badge {
@@ -936,7 +973,9 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
-    margin-top: 1.3rem;
+    padding: 0;
+    margin: 1.3rem 0 0;
+    list-style: none;
 }
 
 .project-actions a,
@@ -1015,6 +1054,7 @@ button {
     flex-direction: column;
     gap: 0.95rem;
     margin: 1.4rem 0 1.8rem;
+    font-style: normal;
 }
 
 .availability {
@@ -1201,8 +1241,12 @@ button {
     }
 
     .skill-group-heading {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
+    }
+
+    .skill-group-count {
+        grid-column: 1;
+        grid-row: auto;
     }
 
     .footer-content {
@@ -1249,7 +1293,11 @@ button {
     }
 
     .skill-title {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title"
+            "level"
+            "percent";
     }
 }
 

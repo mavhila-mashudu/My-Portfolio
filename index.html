@@ -57,21 +57,21 @@
                 <span></span>
             </button>
 
-            <div class="nav-links" id="nav-menu">
-                <a class="nav-link active" href="#home">Home</a>
-                <a class="nav-link" href="#about">About</a>
-                <a class="nav-link" href="#skills">Skills</a>
-                <a class="nav-link" href="#projects">Projects</a>
-                <a class="nav-link" href="#experience">Education</a>
-                <a class="nav-link" href="#contact">Contact</a>
-            </div>
+            <ul class="nav-links" id="nav-menu">
+                <li><a class="nav-link active" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#skills">Skills</a></li>
+                <li><a class="nav-link" href="#projects">Projects</a></li>
+                <li><a class="nav-link" href="#experience">Education</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
         <section class="hero section" id="home">
             <div class="container hero-layout">
-                <div class="hero-copy glass-panel reveal">
+                <header class="hero-copy glass-panel reveal">
                     <p class="section-kicker">Final-Year Computer Science Student</p>
                     <h1>Building secure, scalable, and user-focused digital solutions.</h1>
                     <p class="hero-role">
@@ -87,10 +87,10 @@
                         engineering, cloud and DevOps, and cybersecurity.
                     </p>
 
-                    <div class="hero-actions">
-                        <a class="btn btn-primary" href="#projects">Explore Projects</a>
-                        <a class="btn btn-secondary" href="#contact">Let's Connect</a>
-                    </div>
+                    <menu class="hero-actions">
+                        <li><a class="btn btn-primary" href="#projects">Explore Projects</a></li>
+                        <li><a class="btn btn-secondary" href="#contact">Let's Connect</a></li>
+                    </menu>
 
                     <ul class="hero-metrics" role="list">
                         <li>
@@ -110,15 +110,15 @@
                             <span>Frameworks and tools used</span>
                         </li>
                     </ul>
-                </div>
+                </header>
 
-                <div class="hero-visual">
+                <aside class="hero-visual" aria-label="Profile highlights">
                     <article class="code-window glass-panel reveal" data-parallax="16">
-                        <div class="window-bar">
+                        <header class="window-bar" aria-hidden="true">
                             <span></span>
                             <span></span>
                             <span></span>
-                        </div>
+                        </header>
                         <p class="window-label">student-profile.ts</p>
                         <pre><code>const profile = {
   stage: "final-year computer science student",
@@ -131,27 +131,27 @@
                     <article class="floating-card glass-panel reveal" data-parallax="24">
                         <p class="card-label">Current Focus</p>
                         <h2>Growing across software engineering, cloud and DevOps, and cybersecurity</h2>
-                        <div class="chip-row">
-                            <span>Software Engineering</span>
-                            <span>Cloud &amp; DevOps</span>
-                            <span>Cybersecurity</span>
-                        </div>
+                        <ul class="chip-row" role="list">
+                            <li>Software Engineering</li>
+                            <li>Cloud &amp; DevOps</li>
+                            <li>Cybersecurity</li>
+                        </ul>
                     </article>
 
-                </div>
+                </aside>
             </div>
         </section>
 
         <section class="section" id="about">
             <div class="container">
-                <div class="section-heading reveal">
+                <header class="section-heading reveal">
                     <p class="section-kicker">About Me</p>
                     <h2>A final-year student building toward secure and scalable systems.</h2>
                     <p>
                         I am building a strong foundation across software development, cloud
                         infrastructure, and security while focusing on clean, maintainable code.
                     </p>
-                </div>
+                </header>
 
                 <div class="about-grid">
                     <article class="about-story glass-panel reveal">
@@ -175,31 +175,31 @@
                             infrastructure, and security.
                         </p>
 
-                        <div class="about-highlights">
-                            <div>
+                        <ol class="about-highlights">
+                            <li>
                                 <span>01</span>
                                 <p>Software engineering focused on clean, efficient, maintainable applications.</p>
-                            </div>
-                            <div>
+                            </li>
+                            <li>
                                 <span>02</span>
                                 <p>Cloud and DevOps interest centered on scalable systems and modern infrastructure.</p>
-                            </div>
-                            <div>
+                            </li>
+                            <li>
                                 <span>03</span>
                                 <p>Cybersecurity mindset shaped by reliable, secure, and user-focused solutions.</p>
-                            </div>
-                        </div>
+                            </li>
+                        </ol>
                     </article>
 
                     <aside class="about-profile glass-panel reveal">
-                        <div class="portrait-shell">
-                            <div class="portrait-ring"></div>
+                        <figure class="portrait-shell">
+                            <span class="portrait-ring" aria-hidden="true"></span>
                             <img
                                 class="portrait-photo"
                                 src="profile-photo.jpeg"
                                 alt="Portrait of Mavhila Mashudu"
                             >
-                        </div>
+                        </figure>
 
                         <ul class="profile-facts" role="list">
                             <li>
@@ -226,356 +226,322 @@
 
         <section class="section" id="skills">
             <div class="container">
-                <div class="section-heading reveal">
+                <header class="section-heading reveal">
                     <p class="section-kicker">Skills &amp; Tools</p>
                     <h2>Programming languages, frameworks, and tools I have used.</h2>
                     <p>
                         A clear snapshot of the languages and development environments I work with,
                         including my current level and a visual knowledge bar for each one.
                     </p>
-                </div>
+                </header>
 
-                <div class="skills-stack">
-                    <div class="skills-block">
-                        <div class="skill-group-heading reveal">
-                            <div>
-                                <h3>Programming Languages</h3>
-                                <p>Languages I have used across web development, Android development, systems work, and databases.</p>
-                            </div>
+                <section class="skills-stack" aria-label="Technical skills groups">
+                    <article class="skills-block">
+                        <header class="skill-group-heading reveal">
+                            <h3>Programming Languages</h3>
+                            <p>Languages I have used across web development, Android development, systems work, and databases.</p>
                             <span class="skill-group-count">8 languages</span>
-                        </div>
+                        </header>
 
-                        <div class="skills-grid">
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>JavaScript</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                        <ul class="skills-grid" role="list">
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>JavaScript</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Programming Language</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>HTML</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>HTML</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Markup Language</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>CSS</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>CSS</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Styling Language</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Python</h3>
-                                        <p>Advanced</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Python</h3>
+                                    <p>Advanced</p>
                                     <span>90%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 90%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Programming Language</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Java</h3>
-                                        <p>Advanced</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Java</h3>
+                                    <p>Advanced</p>
                                     <span>90%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 90%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Programming Language</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>C++</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>C++</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Programming Language</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>C</h3>
-                                        <p>Beginner</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>C</h3>
+                                    <p>Beginner</p>
                                     <span>45%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 45%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Programming Language</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>MySQL</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>MySQL</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Database Language</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+                                </p>
+                            </li>
+                        </ul>
+                    </article>
 
-                    <div class="skills-block">
-                        <div class="skill-group-heading reveal">
-                            <div>
-                                <h3>Frameworks &amp; Tools</h3>
-                                <p>Development environments, operating systems, and tools I have used while learning and building projects.</p>
-                            </div>
+                    <article class="skills-block">
+                        <header class="skill-group-heading reveal">
+                            <h3>Frameworks &amp; Tools</h3>
+                            <p>Development environments, operating systems, and tools I have used while learning and building projects.</p>
                             <span class="skill-group-count">7 tools</span>
-                        </div>
+                        </header>
 
-                        <div class="skills-grid">
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Mathematica</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                        <ul class="skills-grid" role="list">
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Mathematica</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Computational Tool</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>VS Code</h3>
-                                        <p>Advanced</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>VS Code</h3>
+                                    <p>Advanced</p>
                                     <span>90%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 90%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Code Editor</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Linux</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Linux</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Operating System</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Eclipse</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Eclipse</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">IDE</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Anaconda</h3>
-                                        <p>Advanced</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Anaconda</h3>
+                                    <p>Advanced</p>
                                     <span>90%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 90%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Python Environment</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Android Studio</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Android Studio</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">IDE</span>
-                                </div>
-                            </article>
+                                </p>
+                            </li>
 
-                            <article class="skill-card glass-panel reveal">
-                                <div class="skill-title">
-                                    <div>
-                                        <h3>Wireshark</h3>
-                                        <p>Intermediate</p>
-                                    </div>
+                            <li class="skill-card glass-panel reveal">
+                                <header class="skill-title">
+                                    <h3>Wireshark</h3>
+                                    <p>Intermediate</p>
                                     <span>70%</span>
-                                </div>
+                                </header>
                                 <div class="progress-track">
                                     <span class="progress-fill" style="--target-width: 70%;"></span>
                                 </div>
-                                <div class="skill-meta">
+                                <p class="skill-meta">
                                     <span class="skill-badge">Network Analysis Tool</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
+                                </p>
+                            </li>
+                        </ul>
+                    </article>
+                </section>
             </div>
         </section>
 
         <section class="section" id="projects">
             <div class="container">
-                <div class="section-heading reveal">
+                <header class="section-heading reveal">
                     <p class="section-kicker">Projects</p>
                     <h2>Personal projects that reflect my learning and growth.</h2>
                     <p>
                         These are my personal projects, and I would be pleased to collaborate with
                         others so I can continue growing my teamwork and collaboration skills.
                     </p>
-                </div>
+                </header>
 
                 <div class="projects-grid">
                     <article class="project-card glass-panel reveal" data-tilt data-project-url="https://mavhila-mashudu.github.io/Music-Tracker/" tabindex="0" role="link" aria-label="Open Music Tracker project">
-                        <div class="project-top">
+                        <header class="project-top">
                             <span class="project-index">01</span>
                             <span class="project-status">Personal Project</span>
-                        </div>
+                        </header>
                         <h3>Music Tracker</h3>
                         <p>
                             A music-focused web application built to explore and track music-related
                             content through a clean and interactive user interface.
                         </p>
-                        <div class="chip-row">
-                            <span>JavaScript</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://mavhila-mashudu.github.io/Music-Tracker/" target="_blank" rel="noreferrer">Visit Project</a>
-                            <a href="#contact">Collaborate</a>
-                        </div>
+                        <ul class="chip-row" role="list">
+                            <li>JavaScript</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                        <menu class="project-actions">
+                            <li><a href="https://mavhila-mashudu.github.io/Music-Tracker/" target="_blank" rel="noreferrer">Visit Project</a></li>
+                            <li><a href="#contact">Collaborate</a></li>
+                        </menu>
                     </article>
 
                     <article class="project-card glass-panel reveal" data-tilt data-project-url="https://mavhila-mashudu.github.io/API-Consumption-and-DOM-Manipulation/" tabindex="0" role="link" aria-label="Open Country Explorer project">
-                        <div class="project-top">
+                        <header class="project-top">
                             <span class="project-index">02</span>
                             <span class="project-status">Personal Project</span>
-                        </div>
+                        </header>
                         <h3>Country Explorer</h3>
                         <p>
                             An API-driven web project that explores country data and demonstrates
                             DOM manipulation, responsive layouts, and interactive filtering.
                         </p>
-                        <div class="chip-row">
-                            <span>API Integration</span>
-                            <span>DOM Manipulation</span>
-                            <span>Responsive UI</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://mavhila-mashudu.github.io/API-Consumption-and-DOM-Manipulation/" target="_blank" rel="noreferrer">Visit Project</a>
-                            <a href="#contact">Collaborate</a>
-                        </div>
+                        <ul class="chip-row" role="list">
+                            <li>API Integration</li>
+                            <li>DOM Manipulation</li>
+                            <li>Responsive UI</li>
+                        </ul>
+                        <menu class="project-actions">
+                            <li><a href="https://mavhila-mashudu.github.io/API-Consumption-and-DOM-Manipulation/" target="_blank" rel="noreferrer">Visit Project</a></li>
+                            <li><a href="#contact">Collaborate</a></li>
+                        </menu>
                     </article>
 
                     <article class="project-card glass-panel reveal" data-tilt data-project-url="https://mavhila-mashudu.github.io/AI-snake/" tabindex="0" role="link" aria-label="Open Wits AI Snake Competition project">
-                        <div class="project-top">
+                        <header class="project-top">
                             <span class="project-index">03</span>
                             <span class="project-status">Personal Project</span>
-                        </div>
+                        </header>
                         <h3>Wits AI Snake Competition</h3>
                         <p>
                             A competition project focused on AI-driven gameplay, logic, and problem
                             solving through the Wits AI Snake challenge environment.
                         </p>
-                        <div class="chip-row">
-                            <span>AI Logic</span>
-                            <span>Problem Solving</span>
-                            <span>Competition Build</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://mavhila-mashudu.github.io/AI-snake/" target="_blank" rel="noreferrer">Visit Project</a>
-                            <a href="#contact">Collaborate</a>
-                        </div>
+                        <ul class="chip-row" role="list">
+                            <li>AI Logic</li>
+                            <li>Problem Solving</li>
+                            <li>Competition Build</li>
+                        </ul>
+                        <menu class="project-actions">
+                            <li><a href="https://mavhila-mashudu.github.io/AI-snake/" target="_blank" rel="noreferrer">Visit Project</a></li>
+                            <li><a href="#contact">Collaborate</a></li>
+                        </menu>
                     </article>
                 </div>
             </div>
@@ -583,7 +549,7 @@
 
         <section class="section" id="experience">
             <div class="container">
-                <div class="section-heading reveal">
+                <header class="section-heading reveal">
                     <p class="section-kicker">Education</p>
                     <h2>My academic journey so far.</h2>
                     <p>
@@ -591,7 +557,7 @@
                         education and academic milestones as I prepare for internships and remote
                         opportunities.
                     </p>
-                </div>
+                </header>
 
                 <div class="timeline">
                     <article class="timeline-item glass-panel reveal">
@@ -630,14 +596,14 @@
 
         <section class="section" id="contact">
             <div class="container">
-                <div class="section-heading reveal">
+                <header class="section-heading reveal">
                     <p class="section-kicker">Contact</p>
                     <h2>Let's build something sharp, useful, and memorable.</h2>
                     <p>
                         Reach out for collaborations, internships, remote opportunities, or product
                         ideas that need a thoughtful engineering partner.
                     </p>
-                </div>
+                </header>
 
                 <div class="contact-grid">
                     <article class="contact-card glass-panel reveal">
@@ -648,11 +614,11 @@
                             collaboration.
                         </p>
 
-                        <div class="contact-links">
+                        <address class="contact-links">
                             <a href="mailto:vlasmavhila@gmail.com">vlasmavhila@gmail.com</a>
                             <a href="https://github.com/mavhila-mashudu" target="_blank" rel="noreferrer">GitHub</a>
                             <a href="https://www.linkedin.com/in/mavhila-mashudu-4a6934304?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BxEsXV7VCQ4WveEZU2AUx%2Bw%3D%3D" target="_blank" rel="noreferrer">LinkedIn</a>
-                        </div>
+                        </address>
 
                         <div class="availability">
                             <span>Availability</span>
