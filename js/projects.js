@@ -29,4 +29,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 2. Rotate the carousel every 3 seconds (3000 milliseconds)
   setInterval(rotateCarousel, 3000);
+
+  // --- Modal Logic ---
+  const modal = document.getElementById('project-modal');
+  const closeBtn = document.getElementById('close-modal');
+
+  // Select all static cards (we added a class 'static-card' to them earlier)
+  const staticCards = document.querySelectorAll('.static-card');
+
+  staticCards.forEach(card => {
+    card.addEventListener('click', () => {
+      modal.style.display = 'flex'; // Show modal
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none'; // Hide modal
+  });
+
+  // Close when clicking outside the box
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
 });
