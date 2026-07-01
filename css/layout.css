@@ -1,0 +1,138 @@
+/* --- Reset --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* --- Hero Section Structure --- */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background-color: #f5f7fa; /* Very soft grayish-blue background */
+  overflow: hidden;
+  
+  /* Flexbox to center the main container vertically */
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+/* --- The Main Container (Left Text / Right Image) --- */
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 5%;
+  z-index: 10; /* Keeps content above the waves */
+  /* Remove translateY to let flexbox center it naturally */
+}
+
+/* --- Typography Styling (Matching the new Screenshot) --- */
+.hero-text {
+  flex: 1;
+  max-width: 650px;
+}
+
+.main-title {
+  font-size: 5rem;
+  font-weight: 300; /* Thin, light weight */
+  color: #1a1a1a; /* Almost black */
+  margin: 0 0 0.5rem 0;
+  line-height: 1;
+  letter-spacing: -0.02em; /* Gives it that tight, modern look */
+}
+
+.sub-title {
+  font-size: 2.5rem;
+  font-weight: 600; /* The title is bolder than the name */
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #6c757d; /* A slightly cooler medium-gray */
+  margin: 0 0 2.5rem 0;
+}
+
+/* --- Button Styling --- */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-primary, .btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px; /* Creates the perfect pill shape */
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #787070;
+  color: #1a1a1a;
+  border: 1px solid #89898a; /* The thin border from the image */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* The soft shadow behind the white button */
+}
+
+.btn-secondary:hover {
+  background-color: #f9fafb;
+  transform: translateY(-2px);
+}
+
+/* --- Floating Image Placeholder --- */
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Keeps the image styling ready for when you uncomment it in the HTML */
+.floating-image {
+  width: 350px;
+  height: auto;
+  filter: drop-shadow(0px 25px 25px rgba(0, 0, 0, 0.25));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* --- Wave Background --- */
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}
+
+.wave-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
