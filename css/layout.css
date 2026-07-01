@@ -10,10 +10,8 @@ html, body {
 .hero-section {
   position: relative;
   height: 100vh;
-  background-color: #f5f7fa; /* Very soft grayish-blue background */
+  background-color: #f5f7fa; /* Change this to a light color so the #222222 text is visible! */
   overflow: hidden;
-  
-  /* Flexbox to center the main container vertically */
   display: flex;
   align-items: center; 
   justify-content: center;
@@ -32,33 +30,39 @@ html, body {
   /* Remove translateY to let flexbox center it naturally */
 }
 
-/* --- Typography Styling (Matching the new Screenshot) --- */
+/* --- Typography Styling --- */
 .hero-text {
   flex: 1;
-  max-width: 650px;
+  max-width: 750px;
 }
 
-.main-title {
-  font-size: 5rem;
-  font-weight: 300; /* Thin, light weight */
-  color: #1a1a1a; /* Almost black */
-  margin: 0 0 0.5rem 0;
-  line-height: 1;
-  letter-spacing: -0.02em; /* Gives it that tight, modern look */
+.hero-text h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 3.5rem; /* Matched to .section-title */
+  font-weight: 400; 
+  color: #222222; 
+  margin: 0 0 16px 0; 
+  line-height: 1.1;
+  letter-spacing: -0.02em; 
 }
 
-.sub-title {
-  font-size: 2.5rem;
-  font-weight: 600; /* The title is bolder than the name */
-  color: #1a1a1a;
-  margin: 0 0 1rem 0;
+.hero-text .gradient-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 40px; 
+  font-weight: 400; 
+  color: #222222; 
+  margin: 0 0 1rem 0; /* Adjusted margin for consistency */
+  line-height: 1.1;
+  letter-spacing: -0.02em; 
 }
 
-.tagline {
-  font-size: 1.25rem;
+.hero-text .subtitle {
+  font-size: 1.25rem; /* Exact match to the projects subtitle */
   font-weight: 400;
-  color: #6c757d; /* A slightly cooler medium-gray */
+  color: #5b7083; /* The exact slate blue/gray from the projects section */
   margin: 0 0 2.5rem 0;
+  line-height: 1.6;
+  max-width: 680px;
 }
 
 /* --- Button Styling --- */
@@ -135,4 +139,131 @@ html, body {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* INSERT THE NEW CSS HERE (At the very bottom of the file) */
+
+/* --- Projects Section Header Styling --- */
+.projects-section {
+  background-color: #f5f5f5; 
+  padding: 6rem 5% 2rem 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 3.5rem; /* Scaled to match the image proportions */
+  font-weight: 400; /* Standard weight, not too thin */
+  color: #222222; /* Deep charcoal black */
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #5b7083; /* The exact slate blue/gray from the image */
+  line-height: 1.6;
+  margin: 0 auto 1.5rem auto;
+  max-width: 680px; /* Forces the text to break exactly after "care from" */
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem; 
+}
+
+.stars svg {
+  width: 24px; /* Slightly smaller to match the image scale */
+  height: 24px;
+  color: #fd7b23; /* Exact bright, soft orange */
+}
+
+@media (max-width: 768px) {
+  /* Update the mobile responsiveness to match the new sizes */
+  .hero-text h1 {
+    font-size: 2.5rem; /* Matched to the mobile projects title */
+  }
+  .hero-text .gradient-text {
+    font-size: 1.75rem;
+  }
+  .section-title { font-size: 2.5rem; }
+  .section-subtitle { font-size: 1.1rem; }
+}
+
+/* --- 3D Rotating Carousel Styling --- */
+.carousel-wrapper {
+  width: 100%;
+  height: 550px; /* Gives the carousel breathing room */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f5f5f5; /* Matches the projects section */
+}
+
+.carousel {
+  position: relative;
+  width: 350px; /* Width of the center card */
+  height: 450px; /* Height of the center card */
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #374151; /* Dark gray for side cards */
+  color: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out; /* This guarantees the smooth glide */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Position 1: Far Left (Smallest, behind) */
+.card.pos-1 { 
+  transform: translateX(-110%) scale(0.7); 
+  z-index: 1; 
+  opacity: 0.3; 
+}
+
+/* Position 2: Mid Left (Medium, overlaps center) */
+.card.pos-2 { 
+  transform: translateX(-60%) scale(0.85); 
+  z-index: 2; 
+  opacity: 0.8; 
+}
+
+/* Position 3: Center (Largest, front) */
+.card.pos-3 { 
+  transform: translateX(0) scale(1); 
+  z-index: 3; 
+  opacity: 1; 
+  background: #1a1a1a; /* Pitch black for the active project */
+}
+
+/* Position 4: Mid Right (Medium, overlaps center) */
+.card.pos-4 { 
+  transform: translateX(60%) scale(0.85); 
+  z-index: 2; 
+  opacity: 0.8; 
+}
+
+/* Position 5: Far Right (Smallest, behind) */
+.card.pos-5 { 
+  transform: translateX(110%) scale(0.7); 
+  z-index: 1; 
+  opacity: 0.3; 
 }
