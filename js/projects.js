@@ -219,13 +219,22 @@ const projects = {
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.getElementById("carousel");
   const cards = carousel ? Array.from(carousel.querySelectorAll(".card")) : [];
+  const carouselControls = document.querySelector(".carousel-controls");
+  const dots = Array.from(document.querySelectorAll(".carousel-dot"));
+  const centerDot = document.querySelector(".center-dot");
+  const pauseBtn = document.getElementById("carousel-pause");
   const positionClasses = ["pos-1", "pos-2", "pos-3", "pos-4", "pos-5"];
   let rotateTimer;
+  let isPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function updatePositions() {
     cards.forEach((card, index) => {
       card.classList.remove(...positionClasses);
       card.classList.add(positionClasses[index]);
+    });
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === 2);
     });
   }
 
@@ -238,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startCarousel() {
-    if (rotateTimer || !cards.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (rotateTimer || !cards.length || isPaused) {
       return;
     }
 
@@ -252,14 +261,81 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function rotateBySteps(steps) {
+    if (!cards.length || steps === 0) return;
+
+    const direction = steps > 0 ? "left" : "right";
+    const totalSteps = Math.abs(steps);
+
+    for (let index = 0; index < totalSteps; index += 1) {
+      if (direction === "left") {
+        cards.push(cards.shift());
+      } else {
+        cards.unshift(cards.pop());
+      }
+    }
+
+    updatePositions();
+  }
+
+  function movePositionToCenter(position) {
+    rotateBySteps(position - 2);
+    if (!isPaused) {
+      stopCarousel();
+      startCarousel();
+    }
+  }
+
+  function updatePauseButton() {
+    if (!pauseBtn) return;
+
+    pauseBtn.classList.toggle("is-paused", isPaused);
+    pauseBtn.setAttribute("aria-pressed", String(isPaused));
+    pauseBtn.setAttribute(
+      "aria-label",
+      isPaused ? "Resume featured project rotation" : "Pause featured project rotation"
+    );
+  }
+
   if (cards.length) {
     updatePositions();
     startCarousel();
 
-    carousel.addEventListener("mouseenter", stopCarousel);
-    carousel.addEventListener("mouseleave", startCarousel);
-    carousel.addEventListener("focusin", stopCarousel);
-    carousel.addEventListener("focusout", startCarousel);
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        movePositionToCenter(Number(dot.dataset.carouselPosition));
+      });
+    });
+  }
+
+  if (centerDot && carouselControls) {
+    centerDot.addEventListener("mouseenter", () => carouselControls.classList.add("pause-visible"));
+    centerDot.addEventListener("focus", () => carouselControls.classList.add("pause-visible"));
+    carouselControls.addEventListener("mouseleave", () => {
+      if (document.activeElement !== pauseBtn) {
+        carouselControls.classList.remove("pause-visible");
+      }
+    });
+  }
+
+  if (pauseBtn) {
+    updatePauseButton();
+
+    pauseBtn.addEventListener("click", () => {
+      isPaused = !isPaused;
+
+      if (isPaused) {
+        stopCarousel();
+      } else {
+        startCarousel();
+      }
+
+      updatePauseButton();
+    });
+
+    pauseBtn.addEventListener("blur", () => {
+      carouselControls?.classList.remove("pause-visible");
+    });
   }
 
   const modal = document.getElementById("project-modal");

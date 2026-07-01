@@ -15,39 +15,19 @@
   <header id="top" class="hero-section">
     <div class="hero-content">
       <div class="hero-text">
-        <p class="eyebrow">Final Year Computer Science Student</p>
-        <h1>Mashudu Mavhila</h1>
-        <h2 class="gradient-text">Software Engineer, AI Enthusiast, and Full Stack Developer</h2>
-        <p class="subtitle">
-          I build high-quality software that solves real-world problems, with interests across Software Engineering,
-          Artificial Intelligence, Full Stack Development, and System Design.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn-primary">View projects</a>
-          <a href="#contact" class="btn-secondary">Contact me</a>
-        </div>
+        <h1>Hi, I'm Mashudu Mavhila</h1>
+        <h2 class="gradient-text">Software Engineer</h2>
+        <p class="subtitle">Final-year Computer Science student at the University of the Witwatersrand.</p>
       </div>
 
-      <aside class="hero-profile-panel" aria-label="Portfolio highlights">
-        <div class="profile-stat">
-          <strong>7+</strong>
-          <span>Software Engineering Projects</span>
-        </div>
-        <div class="profile-stat">
-          <strong>COMS1</strong>
-          <span>First Year Computer Science Tutor</span>
-        </div>
-        <div class="profile-stat">
-          <strong>Wits</strong>
-          <span>University of the Witwatersrand</span>
-        </div>
-      </aside>
+      <figure class="hero-image-container">
+      </figure>
     </div>
 
     <div class="wave-container" aria-hidden="true">
       <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path fill="#d9dee5" d="M0,96 C320,288 480,32 860,96 C1160,144 1300,192 1440,128 L1440,320 L0,320 Z"></path>
-        <path fill="#e8ebef" d="M0,160 C300,280 500,120 860,160 C1140,190 1300,224 1440,160 L1440,320 L0,320 Z"></path>
+        <path fill="#cccccc" d="M0,96 C320,288 480,32 860,96 C1160,144 1300,192 1440,128 L1440,320 L0,320 Z"></path>
+        <path fill="#e6e6e6" d="M0,160 C300,280 500,120 860,160 C1140,190 1300,224 1440,160 L1440,320 L0,320 Z"></path>
         <path fill="#f5f5f5" d="M0,224 C280,280 520,180 860,210 C1120,230 1300,256 1440,192 L1440,320 L0,320 Z"></path>
       </svg>
     </div>
@@ -100,6 +80,17 @@
             <span class="card-status">HTML, CSS, JavaScript</span>
           </button>
         </div>
+
+        <div class="carousel-controls" aria-label="Featured project controls">
+          <button class="carousel-dot" type="button" data-carousel-position="0" aria-label="Move far-left project to center"></button>
+          <button class="carousel-dot" type="button" data-carousel-position="1" aria-label="Move left project to center"></button>
+          <button class="carousel-dot center-dot" type="button" data-carousel-position="2" aria-label="Current center project"></button>
+          <button class="carousel-dot" type="button" data-carousel-position="3" aria-label="Move right project to center"></button>
+          <button class="carousel-dot" type="button" data-carousel-position="4" aria-label="Move far-right project to center"></button>
+          <button class="carousel-pause" id="carousel-pause" type="button" aria-label="Pause featured project rotation" aria-pressed="false">
+            <span class="pause-icon" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
 
       <div class="static-projects-grid" aria-label="All projects">
@@ -109,11 +100,6 @@
           </div>
           <h3 class="card-title">Oportunet</h3>
           <p class="card-summary">South African learnership and skills development portal connecting applicants with employers and training providers.</p>
-          <ul class="card-details">
-            <li>Completed university team project</li>
-            <li>Authentication, dashboards, analytics, exports</li>
-            <li>HTML, CSS, JavaScript, Firebase, EmailJS</li>
-          </ul>
           <button class="card-link project-trigger" type="button" data-project-id="oportunet">
             View details
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
@@ -126,11 +112,6 @@
           </div>
           <h3 class="card-title">Wits AI Snake</h3>
           <p class="card-summary">Intelligent Snake competition agent with adaptive behaviour, pathfinding, and real-time strategic decision making.</p>
-          <ul class="card-details">
-            <li>Completed AI competition project</li>
-            <li>A* pathfinding, attack mode, space control</li>
-            <li>Java, Algorithms, Artificial Intelligence</li>
-          </ul>
           <button class="card-link project-trigger" type="button" data-project-id="wits-ai-snake">
             View details
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
@@ -143,11 +124,6 @@
           </div>
           <h3 class="card-title">FoodBridge SA</h3>
           <p class="card-summary">Food donation web app connecting providers, NGOs, and delivery volunteers to reduce waste and support communities.</p>
-          <ul class="card-details">
-            <li>Currently in development</li>
-            <li>Authentication and role-based systems</li>
-            <li>React, JavaScript, Express, MySQL</li>
-          </ul>
           <button class="card-link project-trigger" type="button" data-project-id="foodbridge-sa">
             View details
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
@@ -160,11 +136,6 @@
           </div>
           <h3 class="card-title">UniApply SA</h3>
           <p class="card-summary">Platform designed to simplify university applications for Grade 12 students with secure document workflows.</p>
-          <ul class="card-details">
-            <li>Currently in development team project</li>
-            <li>Student applications and document uploads</li>
-            <li>Node.js, Express, PostgreSQL, Supabase</li>
-          </ul>
           <button class="card-link project-trigger" type="button" data-project-id="uniapply-sa">
             View details
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
@@ -177,11 +148,6 @@
           </div>
           <h3 class="card-title">Personal Portfolio</h3>
           <p class="card-summary">Modern software engineering portfolio built to showcase technical skills, projects, and professional growth.</p>
-          <ul class="card-details">
-            <li>Completed personal project</li>
-            <li>Responsive design, accessibility, performance</li>
-            <li>HTML, CSS, JavaScript</li>
-          </ul>
           <button class="card-link project-trigger" type="button" data-project-id="personal-portfolio">
             View details
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
@@ -194,11 +160,6 @@
           </div>
           <h3 class="card-title">Country Explorer</h3>
           <p class="card-summary">Responsive country search app with geopolitical details, neighboring country navigation, and secure serverless access.</p>
-          <ul class="card-details">
-            <li>Completed web application</li>
-            <li>Country search, statistics, currencies, languages</li>
-            <li>HTML, CSS, JavaScript, Vercel Functions</li>
-          </ul>
           <button class="card-link project-trigger" type="button" data-project-id="country-explorer">
             View details
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
@@ -211,11 +172,6 @@
           </div>
           <h3 class="card-title">Music Tracker</h3>
           <p class="card-summary">Smaller JavaScript project focused on strengthening development skills through music tracking functionality.</p>
-          <ul class="card-details">
-            <li>Skill-building project</li>
-            <li>JavaScript practice and UI interaction</li>
-            <li>JavaScript</li>
-          </ul>
           <button class="card-link project-trigger" type="button" data-project-id="music-tracker">
             View details
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
