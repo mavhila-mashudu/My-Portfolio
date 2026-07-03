@@ -1,449 +1,725 @@
-const projects = {
-  "oportunet": {
-    title: "Oportunet",
-    status: "Completed University Team Project",
-    description:
-      "Oportunet is a South African learnerships and skills development portal designed to connect job seekers with learnerships, internships, apprenticeships, employers, and training providers. The platform streamlines applications while allowing providers to manage opportunities, review applications, and monitor analytics.",
-    features: [
-      "User authentication",
-      "Applicant profiles",
-      "Opportunity listings",
-      "Application tracking",
-      "Recruiter dashboard",
-      "Admin dashboard",
-      "Notifications",
-      "Analytics dashboard",
-      "CSV export",
-      "PDF export",
-      "NQF integration"
-    ],
-    tech: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Firebase Authentication",
-      "Firestore",
-      "Firebase Functions",
-      "EmailJS"
-    ],
-    learningsTitle: "What I Learned",
-    learnings: [
-      "Agile development",
-      "CI/CD principles",
-      "Software architecture",
-      "Repository pattern",
-      "Service layer pattern",
-      "Team collaboration",
-      "MVC-like design",
-      "Large-scale project organization"
-    ],
-    meta: {
-      Type: "Collaborative software engineering project",
-      Role: "Team contributor",
-      Focus: "Application workflow, dashboards, and maintainable structure"
-    }
-  },
-  "wits-ai-snake": {
-    title: "Wits AI Snake",
-    status: "Completed",
-    description:
-      "An intelligent AI Snake agent developed for the University of the Witwatersrand AI Snake Competition. The project focuses on creating an adaptive AI capable of surviving, competing, and eliminating opponents within a multiplayer environment.",
-    features: [
-      "A* pathfinding",
-      "Safe mode",
-      "Attack mode",
-      "Space control",
-      "Multi-agent AI",
-      "Dynamic risk analysis",
-      "Opponent prediction",
-      "Adaptive behaviour"
-    ],
-    tech: ["Java", "Algorithms", "Artificial Intelligence", "Data Structures"],
-    learningsTitle: "What I Learned",
-    learnings: [
-      "Heuristic search",
-      "AI decision making",
-      "Optimization",
-      "Real-time algorithms",
-      "Competitive programming"
-    ],
-    meta: {
-      Type: "University AI competition project",
-      Role: "Developer",
-      Focus: "Pathfinding, risk analysis, and competitive strategy"
-    }
-  },
-  "foodbridge-sa": {
-    title: "FoodBridge SA",
-    status: "Currently In Development",
-    description:
-      "FoodBridge SA is a web application connecting food providers, NGOs, and delivery volunteers to reduce food waste while helping feed homeless communities. Providers donate excess food to NGOs, and volunteers transport food for distribution.",
-    features: [
-      "Food provider workflows",
-      "NGO coordination",
-      "Delivery volunteer participation",
-      "Role-based system design",
-      "Authentication planning",
-      "Donation and distribution flow"
-    ],
-    tech: ["React", "JavaScript", "Express", "MySQL"],
-    learningsTitle: "Focus Areas",
-    learnings: [
-      "Full stack development",
-      "Authentication",
-      "Role-based systems",
-      "Software architecture"
-    ],
-    meta: {
-      Type: "Full stack web application",
-      Role: "Developer",
-      Focus: "Food donation coordination and role-based workflows"
-    }
-  },
-  "uniapply-sa": {
-    title: "UniApply SA",
-    status: "Currently In Development Team Project",
-    description:
-      "UniApply SA is a platform designed to simplify university applications for Grade 12 students, including authentication, student applications, document uploads, and secure backend architecture.",
-    features: [
-      "Student authentication",
-      "Student application workflows",
-      "Document uploads",
-      "Secure backend architecture",
-      "Frontend deployment on Vercel",
-      "Express REST API",
-      "Service layer",
-      "Repository layer"
-    ],
-    tech: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "Supabase",
-      "Cloudinary",
-      "Vercel",
-      "Render"
-    ],
-    learningsTitle: "Current Focus",
-    learnings: [
-      "Authentication",
-      "Student applications",
-      "Document uploads",
-      "Secure backend architecture"
-    ],
-    meta: {
-      Type: "Collaborative full stack project",
-      Role: "Team contributor",
-      Focus: "Applications, document handling, and backend structure"
-    }
-  },
-  "personal-portfolio": {
-    title: "Personal Portfolio",
-    status: "Completed",
-    description:
-      "A modern software engineering portfolio built to showcase my technical skills, projects, and professional journey.",
-    features: [
-      "Responsive layout",
-      "Featured project carousel",
-      "Project detail modal",
-      "Skills and journey sections",
-      "Accessible contact links"
-    ],
-    tech: ["HTML", "CSS", "JavaScript"],
-    learningsTitle: "Focus Areas",
-    learnings: ["Responsive design", "Modern UI", "Performance", "Accessibility"],
-    meta: {
-      Type: "Personal portfolio",
-      Role: "Designer and developer",
-      Focus: "Project storytelling and frontend polish"
-    }
-  },
-  "country-explorer": {
-    title: "Country Explorer",
-    status: "Completed",
-    description:
-      "A responsive web application that allows users to search for countries, view detailed geopolitical information, and explore neighboring countries.",
-    features: [
-      "Country search",
-      "Border country navigation",
-      "Population statistics",
-      "Language information",
-      "Currency information",
-      "Responsive design",
-      "Serverless backend architecture",
-      "Secure API key management"
-    ],
-    tech: ["HTML", "CSS", "JavaScript", "Vercel Serverless Functions"],
-    learningsTitle: "Focus Areas",
-    learnings: [
-      "API-backed search",
-      "Responsive UI design",
-      "Serverless backend architecture",
-      "Secure API key management"
-    ],
-    meta: {
-      Type: "Responsive web application",
-      Role: "Developer",
-      Focus: "Country data exploration and secure API access"
-    }
-  },
-  "music-tracker": {
-    title: "Music Tracker",
-    status: "Skill-building Project",
-    description:
-      "A smaller project focused on strengthening JavaScript development skills while exploring music tracking functionality.",
-    features: [
-      "Music tracking interface",
-      "JavaScript interaction practice",
-      "Frontend state handling",
-      "Small project iteration"
-    ],
-    tech: ["JavaScript"],
-    learningsTitle: "Focus Areas",
-    learnings: [
-      "JavaScript fundamentals",
-      "User interface interaction",
-      "Incremental project building"
-    ],
-    meta: {
-      Type: "Practice project",
-      Role: "Developer",
-      Focus: "JavaScript skill development"
-    }
-  }
-};
+(function () {
+  const data = window.portfolioData;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const carousel = document.getElementById("carousel");
-  const cards = carousel ? Array.from(carousel.querySelectorAll(".card")) : [];
-  const carouselControls = document.querySelector(".carousel-controls");
-  const dots = Array.from(document.querySelectorAll(".carousel-dot"));
-  const centerDot = document.querySelector(".center-dot");
-  const pauseBtn = document.getElementById("carousel-pause");
-  const positionClasses = ["pos-1", "pos-2", "pos-3", "pos-4", "pos-5"];
-  let rotateTimer;
-  let isPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function updatePositions() {
-    cards.forEach((card, index) => {
-      card.classList.remove(...positionClasses);
-      card.classList.add(positionClasses[index]);
-    });
-
-    dots.forEach((dot, index) => {
-      dot.classList.toggle("is-active", index === 2);
-    });
+  if (!data) {
+    return;
   }
 
-  function rotateCarousel() {
-    if (!cards.length) return;
+  const projectMap = new Map(data.projects.map((project) => [project.id, project]));
+  const detailDataById = {
+    oportunet: {
+      category: "COLLABORATION",
+      status: "Completed",
+      type: "University Team Project",
+      role: "Frontend, Testing and UI Polish",
+      summary:
+        "A South African learnerships and skills development portal that connects job seekers with learnerships, internships, apprenticeships, employers, and training providers.",
+      about: [
+        "Oportunet is a South African Learnerships and Skills Development Portal designed to connect job seekers with learnerships, internships, apprenticeships, employers, and training providers.",
+        "The project supports different user roles, including applicants, recruiters, and administrators. Applicants can manage profiles, browse opportunities, apply for positions, and track their applications. Recruiters can post and manage opportunities, while admins can monitor users, opportunities, and platform activity.",
+        "The system uses a hybrid client-server architecture with a page-based frontend and a layered service-repository structure. The UI layer is separated from shared helpers, services, repositories, and Firebase backend services.",
+        "This project demonstrates teamwork, role-based features, authentication, dashboard development, application tracking, notification handling, and maintainable frontend architecture."
+      ],
+      architecture: [
+        "Hybrid client-server architecture",
+        "Page-based frontend",
+        "Service layer pattern",
+        "Repository pattern",
+        "Module pattern",
+        "Firebase backend services"
+      ],
+      tech: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Firebase Authentication",
+        "Firestore",
+        "Firebase Functions",
+        "EmailJS"
+      ]
+    },
+    "wits-ai-snake": {
+      category: "ARTIFICIAL INTELLIGENCE",
+      status: "Completed",
+      type: "University AI Competition Project",
+      role: "AI Agent Developer",
+      summary:
+        "An intelligent Snake agent built for the Wits AI Snake competition, using pathfinding, safe movement, space control, and aggressive multi-agent strategy.",
+      about: [
+        "AI Snake is an intelligent Snake agent developed for the AI Snake competition hosted at the University of the Witwatersrand. The goal of the agent is to compete in a multi-snake environment where each snake must survive, grow, and strategically eliminate opponents.",
+        "The agent receives structured input from the competition system every turn. This includes the board dimensions, apple position, snake positions, snake lengths, obstacles, and current game state. It then builds a matrix-based representation of the board so it can reason about safe and unsafe areas.",
+        "The main strategy is based on the A* pathfinding algorithm. The snake uses A* to calculate the fastest and safest route to the apple while avoiding snake bodies, obstacles, head-to-head collisions, crowded regions, and possible traps.",
+        "When the apple is unreachable or too risky, the agent switches to Safe Mode. In this mode, it focuses on survival by choosing moves that maximise reachable space and reduce the chance of being trapped.",
+        "This project demonstrates artificial intelligence, heuristic search, real-time decision-making, risk analysis, multi-agent strategy, and algorithm design."
+      ],
+      features: [
+        "A* pathfinding",
+        "Safe Mode",
+        "Attack Mode",
+        "Space control",
+        "Multi-agent AI",
+        "Dynamic risk analysis",
+        "Opponent prediction",
+        "Adaptive behaviour",
+        "Matrix-based board representation",
+        "Head-to-head collision avoidance",
+        "Trap avoidance"
+      ],
+      architecture: [
+        "Real-time decision-making loop",
+        "Grid/matrix board representation",
+        "Heuristic search",
+        "Fallback survival strategy",
+        "Risk-based movement evaluation"
+      ],
+      tech: [
+        "Java",
+        "Algorithms",
+        "Artificial Intelligence",
+        "Data Structures",
+        "A* Pathfinding",
+        "Multi-Agent Strategy"
+      ]
+    },
+    "foodbridge-sa": {
+      category: "SOCIAL IMPACT",
+      status: "In Development",
+      type: "Personal Full Stack Project",
+      role: "Full Stack Developer",
+      summary:
+        "A food rescue web app connecting food providers, NGOs, and delivery volunteers to reduce food waste and support homeless communities.",
+      about: [
+        "FoodBridge SA is a web application designed to connect food providers, NGOs, and delivery volunteers so that surplus food can be donated instead of wasted.",
+        "The goal of the project is to reduce food waste while helping feed homeless communities. Food businesses such as restaurants, shops, bakeries, farms, and supermarkets can post surplus food donations. NGOs and community organisations can then claim donations and arrange collection.",
+        "The current project is organised as a two-part JavaScript application, with a React + Vite frontend and an Express/MySQL-oriented backend scaffold.",
+        "This project demonstrates social-impact product thinking, UI design, semantic React development, role-based platform planning, and preparation for a multi-tier REST-style architecture."
+      ],
+      features: [
+        "Food donor role",
+        "NGO/community kitchen role",
+        "Volunteer driver role",
+        "Landing page",
+        "Role preview cards",
+        "How-it-works section",
+        "Impact statistics",
+        "Responsive UI",
+        "Express backend scaffold",
+        "MySQL-oriented backend planning"
+      ],
+      architecture: [
+        "React + Vite frontend",
+        "Express backend scaffold",
+        "Multi-tier project structure",
+        "REST API preparation",
+        "Role-based dashboard planning"
+      ],
+      tech: [
+        "React",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Express",
+        "MySQL",
+        "Vite"
+      ]
+    },
+    "uniapply-sa": {
+      category: "EDUCATION TECH",
+      status: "In Development",
+      type: "Team Project",
+      role: "Frontend and System Planning",
+      summary:
+        "A platform designed to help South African matric students manage university applications, documents, APS calculations, recommendations, fees, tracking, and notifications.",
+      about: [
+        "UniApply SA is a planned web application for South African matric students who need one place to manage university applications.",
+        "The platform is designed to help students create profiles, manage academic records, upload supporting documents, browse universities and programmes, calculate university-specific APS scores, receive programme recommendations, and track applications.",
+        "The planned system also includes an application selection cart, fees, payments, tracking, notifications, and admin processing tools.",
+        "The architecture uses a Vercel frontend, Supabase Auth for authentication, a Render REST API, a service layer, a repository layer, and Render PostgreSQL for application data."
+      ],
+      features: [
+        "Student profiles",
+        "Academic records",
+        "Supporting document uploads",
+        "University browsing",
+        "Programme browsing",
+        "University-specific APS calculations",
+        "Programme recommendations",
+        "Application selection cart",
+        "Fees and payments",
+        "Application tracking",
+        "Notifications",
+        "Admin processing tools"
+      ],
+      architecture: [
+        "Vercel frontend",
+        "Supabase Auth",
+        "Render REST API",
+        "Express routes and controllers",
+        "Service layer",
+        "Repository layer",
+        "Render PostgreSQL",
+        "Cloudinary file storage adapter"
+      ],
+      tech: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Supabase",
+        "Cloudinary",
+        "Vercel",
+        "Render"
+      ]
+    },
+    "personal-portfolio": {
+      category: "PERSONAL BRAND",
+      status: "Completed",
+      type: "Personal Website",
+      role: "Frontend Developer",
+      summary:
+        "A modern software engineering portfolio built to showcase technical skills, projects, education, journey, and professional growth.",
+      about: [
+        "Personal Portfolio is a modern software engineering portfolio built to showcase my technical skills, projects, and professional journey.",
+        "The portfolio presents my identity as a final-year Computer Science student, software engineering candidate, AI enthusiast, full stack learner, and problem solver.",
+        "The project includes sections for home, projects, skills, journey, education, why hire me, about me, contact, and footer.",
+        "This project demonstrates frontend development, responsive design, personal branding, portfolio organisation, and attention to user interface design."
+      ],
+      architecture: [
+        "Static frontend structure",
+        "Reusable project data",
+        "Modal-based project details",
+        "Responsive layout",
+        "Clean HTML, CSS, and JavaScript separation"
+      ],
+      tech: [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    "country-explorer": {
+      category: "SERVERLESS APP",
+      status: "Completed",
+      type: "Personal Web Application",
+      role: "Frontend and Serverless API Developer",
+      summary:
+        "A responsive web app for searching countries, viewing geopolitical information, and exploring bordering nations through secure serverless API routes.",
+      about: [
+        "Country Explorer is a responsive web application that allows users to search for countries, view detailed geopolitical data, and explore bordering nations.",
+        "The application allows users to query specific countries and dynamically view important details such as population, subregion, capitals, spoken languages, and currencies.",
+        "It also supports relational border mapping by calculating and displaying interactive links to neighbouring countries that share a land border with the selected country.",
+        "The project uses a serverless backend architecture hosted on Vercel. This separates client-side rendering from third-party API communication and keeps API keys secure outside the browser."
+      ],
+      features: [
+        "Country search",
+        "Granular country data",
+        "Population statistics",
+        "Subregion information",
+        "Capital city information",
+        "Language information",
+        "Currency information",
+        "Border country navigation",
+        "Global country directory",
+        "Loading states",
+        "Error handling",
+        "Secure API key management"
+      ],
+      architecture: [
+        "Serverless backend architecture",
+        "Vercel serverless functions",
+        "Secure environment variables",
+        "Frontend/backend separation of concerns",
+        "Internal API routes",
+        "Third-party API integration"
+      ],
+      tech: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Vercel",
+        "Serverless Functions",
+        "REST Countries API"
+      ]
+    },
+    "music-tracker": {
+      category: "JAVASCRIPT APP",
+      status: "Completed",
+      type: "Personal Practice Project",
+      role: "Frontend Developer",
+      summary:
+        "A small JavaScript web app for managing songs, classifying them by decade, filtering by artist or year, and storing data in local storage.",
+      about: [
+        "Music Tracker is a web application that allows users to manage and explore a music collection.",
+        "Users can add songs by entering the artist name, song name, and year of release. The app automatically determines the decade in which each song was released and displays each song with its artist, title, and decade.",
+        "The application stores songs in local storage, which means the saved songs remain available even after refreshing the browser.",
+        "The project also includes filtering by artist, filtering by minimum or maximum year, and grouping songs by year for easier browsing."
+      ],
+      features: [
+        "Add songs",
+        "Artist name input",
+        "Song name input",
+        "Release year input",
+        "Automatic decade classification",
+        "Local storage persistence",
+        "Filter by artist",
+        "Filter by minimum year",
+        "Filter by maximum year",
+        "Group songs by year",
+        "Semantic HTML structure"
+      ],
+      architecture: [
+        "Static frontend application",
+        "Browser local storage",
+        "DOM-based rendering",
+        "Client-side filtering",
+        "Semantic HTML"
+      ],
+      tech: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Local Storage"
+      ]
+    }
+  };
+  const techIconMap = {
+    HTML: "devicon-html5-plain colored",
+    CSS: "devicon-css3-plain colored",
+    JavaScript: "devicon-javascript-plain colored",
+    React: "devicon-react-original colored",
+    Java: "devicon-java-plain colored",
+    Firebase: "devicon-firebase-plain colored",
+    Firestore: "devicon-firebase-plain colored",
+    "Firebase Authentication": "devicon-firebase-plain colored",
+    "Firebase Functions": "devicon-firebase-plain colored",
+    Express: "devicon-express-original colored",
+    MySQL: "devicon-mysql-plain colored",
+    "Node.js": "devicon-nodejs-plain colored",
+    PostgreSQL: "devicon-postgresql-plain colored",
+    Supabase: "devicon-supabase-plain colored",
+    Vercel: "devicon-vercel-original colored",
+    Vite: "devicon-vitejs-plain colored"
+  };
 
-    const firstCard = cards.shift();
-    cards.push(firstCard);
-    updatePositions();
-  }
+  function createElement(tag, options = {}) {
+    const element = document.createElement(tag);
 
-  function startCarousel() {
-    if (rotateTimer || !cards.length || isPaused) {
-      return;
+    if (options.className) {
+      element.className = options.className;
     }
 
-    rotateTimer = window.setInterval(rotateCarousel, 3500);
-  }
-
-  function stopCarousel() {
-    if (rotateTimer) {
-      window.clearInterval(rotateTimer);
-      rotateTimer = null;
-    }
-  }
-
-  function rotateBySteps(steps) {
-    if (!cards.length || steps === 0) return;
-
-    const direction = steps > 0 ? "left" : "right";
-    const totalSteps = Math.abs(steps);
-
-    for (let index = 0; index < totalSteps; index += 1) {
-      if (direction === "left") {
-        cards.push(cards.shift());
-      } else {
-        cards.unshift(cards.pop());
-      }
+    if (options.text) {
+      element.textContent = options.text;
     }
 
-    updatePositions();
-  }
-
-  function movePositionToCenter(position) {
-    rotateBySteps(position - 2);
-    if (!isPaused) {
-      stopCarousel();
-      startCarousel();
+    if (options.html) {
+      element.innerHTML = options.html;
     }
-  }
 
-  function updatePauseButton() {
-    if (!pauseBtn) return;
-
-    pauseBtn.classList.toggle("is-paused", isPaused);
-    pauseBtn.setAttribute("aria-pressed", String(isPaused));
-    pauseBtn.setAttribute(
-      "aria-label",
-      isPaused ? "Resume featured project rotation" : "Pause featured project rotation"
-    );
-  }
-
-  if (cards.length) {
-    updatePositions();
-    startCarousel();
-
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        movePositionToCenter(Number(dot.dataset.carouselPosition));
+    if (options.attrs) {
+      Object.entries(options.attrs).forEach(([name, value]) => {
+        element.setAttribute(name, value);
       });
-    });
-  }
-
-  if (centerDot && carouselControls) {
-    centerDot.addEventListener("mouseenter", () => carouselControls.classList.add("pause-visible"));
-    centerDot.addEventListener("focus", () => carouselControls.classList.add("pause-visible"));
-    carouselControls.addEventListener("mouseleave", () => {
-      if (document.activeElement !== pauseBtn) {
-        carouselControls.classList.remove("pause-visible");
-      }
-    });
-  }
-
-  if (pauseBtn) {
-    updatePauseButton();
-
-    pauseBtn.addEventListener("click", () => {
-      isPaused = !isPaused;
-
-      if (isPaused) {
-        stopCarousel();
-      } else {
-        startCarousel();
-      }
-
-      updatePauseButton();
-    });
-
-    pauseBtn.addEventListener("blur", () => {
-      carouselControls?.classList.remove("pause-visible");
-    });
-  }
-
-  const modal = document.getElementById("project-modal");
-  const closeBtn = document.getElementById("close-modal");
-  const modalTitle = document.getElementById("modal-title");
-  const modalStatus = document.getElementById("modal-status");
-  const modalDescription = document.getElementById("modal-description");
-  const modalFeatures = document.getElementById("modal-features");
-  const modalTech = document.getElementById("modal-tech");
-  const modalMeta = document.getElementById("modal-meta");
-  const modalLearnings = document.getElementById("modal-learnings");
-  const modalLearningsTitle = document.getElementById("modal-learnings-title");
-  const featuresSection = document.getElementById("features-section");
-  const learningsSection = document.getElementById("learnings-section");
-  let lastFocusedElement = null;
-
-  function fillList(container, items) {
-    container.replaceChildren();
-
-    items.forEach((item) => {
-      const listItem = document.createElement("li");
-      listItem.textContent = item;
-      container.appendChild(listItem);
-    });
-  }
-
-  function fillTech(items) {
-    modalTech.replaceChildren();
-
-    items.forEach((item) => {
-      const tag = document.createElement("span");
-      tag.textContent = item;
-      modalTech.appendChild(tag);
-    });
-  }
-
-  function fillMeta(details) {
-    modalMeta.replaceChildren();
-
-    Object.entries(details).forEach(([label, value]) => {
-      const term = document.createElement("dt");
-      const description = document.createElement("dd");
-
-      term.textContent = label;
-      description.textContent = value;
-
-      modalMeta.append(term, description);
-    });
-  }
-
-  function toggleSection(section, items) {
-    section.hidden = items.length === 0;
-  }
-
-  function openProject(projectId) {
-    const project = projects[projectId];
-    if (!project || !modal) return;
-
-    lastFocusedElement = document.activeElement;
-    modalTitle.textContent = project.title;
-    modalStatus.textContent = project.status;
-    modalDescription.textContent = project.description;
-    modalLearningsTitle.textContent = project.learningsTitle;
-
-    fillList(modalFeatures, project.features);
-    fillList(modalLearnings, project.learnings);
-    fillTech(project.tech);
-    fillMeta(project.meta);
-    toggleSection(featuresSection, project.features);
-    toggleSection(learningsSection, project.learnings);
-
-    modal.hidden = false;
-    document.body.classList.add("modal-open");
-    closeBtn.focus();
-  }
-
-  function closeProject() {
-    if (!modal || modal.hidden) return;
-
-    modal.hidden = true;
-    document.body.classList.remove("modal-open");
-
-    if (lastFocusedElement) {
-      lastFocusedElement.focus();
     }
+
+    return element;
   }
 
-  document.querySelectorAll(".project-trigger").forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      openProject(trigger.dataset.projectId);
+  function createArrowIcon() {
+    return createElement("span", {
+      className: "arrow-icon",
+      html:
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>'
     });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closeProject);
   }
 
-  if (modal) {
-    modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        closeProject();
+  function createDetailsIcon() {
+    return createElement("span", {
+      className: "details-icon",
+      attrs: { "aria-hidden": "true" },
+      html:
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 13h8"></path><path d="M8 17h5"></path></svg>'
+    });
+  }
+
+  function getStatusTone(text = "") {
+    const normalized = text.toLowerCase();
+
+    if (normalized.includes("progress") || normalized.includes("development")) {
+      return "warning";
+    }
+
+    if (normalized.includes("complete")) {
+      return "success";
+    }
+
+    return "neutral";
+  }
+
+  function getProjectCover(project) {
+    return project.media && project.media.length ? project.media[0] : null;
+  }
+
+  function createProjectImage(project, className, options = {}) {
+    const cover = getProjectCover(project);
+    const wrapper = createElement("div", {
+      className: cover ? `${className} has-image` : className,
+      attrs: cover ? {} : { "aria-hidden": "true" }
+    });
+
+    if (cover) {
+      wrapper.appendChild(
+        createElement("img", {
+          attrs: {
+            src: cover.src,
+            alt: cover.alt,
+            loading: options.loading || "lazy",
+            decoding: "async"
+          }
+        })
+      );
+    }
+
+    return wrapper;
+  }
+
+  function createProjectTrigger(project, label, className) {
+    const button = createElement("button", {
+      className,
+      text: label,
+      attrs: {
+        type: "button",
+        "data-project-id": project.id
+      }
+    });
+
+    button.appendChild(createArrowIcon());
+    return button;
+  }
+
+  function createProjectAffordance(label) {
+    const labelElement = createElement("span", { className: "card-link-label" });
+    const affordance = createElement("span", {
+      className: "card-link",
+      attrs: { "aria-hidden": "true" }
+    });
+
+    labelElement.append(createDetailsIcon(), document.createTextNode(label));
+    affordance.append(labelElement, createArrowIcon());
+    return affordance;
+  }
+
+  function renderCarousel() {
+    const carousel = document.getElementById("carousel");
+    const controls = document.getElementById("carousel-controls");
+    if (!carousel || !controls) return;
+
+    carousel.replaceChildren();
+    controls.replaceChildren();
+
+    const featuredProjects = data.projects.filter((project) => Boolean(getProjectCover(project)));
+
+    featuredProjects.forEach((project, index) => {
+      const slide = createElement("button", {
+        className: "slider-slide project-trigger",
+        attrs: {
+          type: "button",
+          "data-project-id": project.id,
+          "aria-label": `Open details for ${project.title}`,
+          "aria-hidden": index === 0 ? "false" : "true",
+          tabindex: index === 0 ? "0" : "-1"
+        }
+      });
+
+      slide.style.transform = `translateX(${index * 100}%)`;
+      slide.appendChild(createProjectImage(project, "slider-media", { loading: index === 0 ? "eager" : "lazy" }));
+
+      carousel.appendChild(slide);
+    });
+
+    featuredProjects.forEach((project, index) => {
+      controls.appendChild(
+        createElement("button", {
+          className: index === 0 ? "carousel-dot is-active" : "carousel-dot",
+          attrs: {
+            type: "button",
+            "data-slide-index": String(index),
+            "aria-label": `Show ${project.title}`
+          }
+        })
+      );
+    });
+  }
+
+  function renderProjectGrid() {
+    const grid = document.getElementById("projects-grid");
+    if (!grid) return;
+
+    grid.replaceChildren();
+
+    data.projects.forEach((project) => {
+      const article = createElement("article", {
+        className: `static-card theme-${project.theme} project-trigger reveal-item`,
+        attrs: {
+          role: "button",
+          tabindex: "0",
+          "data-project-id": project.id,
+          "aria-label": `Open details for ${project.title}`
+        }
+      });
+      const body = createElement("div", { className: "static-card-body" });
+      const titleRow = createElement("div", { className: "card-title-row" });
+      const statusText = project.cardFacts[1] || project.status;
+      const titleMain = createElement("div", { className: "card-title-main" });
+      const statusBadge = createElement("span", {
+        className: "card-status-badge",
+        text: statusText
+      });
+      const skillsCount = Math.min(project.learnings.length, 2);
+      const statusLine = createElement("div", { className: "project-status-line" });
+      const detailRow = createElement("div", { className: "card-detail-row" });
+
+      titleMain.appendChild(createElement("h3", { className: "card-title", text: project.title }));
+
+      titleRow.append(
+        titleMain,
+        statusBadge
+      );
+
+      statusLine.append(
+        createElement("span", { className: `status-dot ${getStatusTone(statusText)}` }),
+        createElement("span", { text: `${skillsCount} skills learned` })
+      );
+
+      [project.kicker, project.cardFacts[2]].filter(Boolean).forEach((detail) => {
+        detailRow.appendChild(createElement("span", { className: "card-detail-item", text: detail }));
+      });
+
+      body.append(
+        titleRow,
+        createElement("p", { className: "project-kicker", text: project.cardFacts[0] || project.kicker }),
+        statusLine,
+        detailRow,
+        createProjectAffordance("View details")
+      );
+
+      article.append(createProjectImage(project, "project-visual"), body);
+      grid.appendChild(article);
+    });
+  }
+
+  function getProjectDetails(project) {
+    const details = detailDataById[project.id] || {};
+    const technologyNames = details.tech || project.tech || [];
+
+    return {
+      ...project,
+      ...details,
+      features: details.features || project.features || [],
+      technologies: details.technologies || technologyNames.map((name) => ({ name })),
+      about: details.about || [project.description].filter(Boolean),
+      architecture: details.architecture || [project.meta && project.meta.Focus].filter(Boolean),
+      type: details.type || (project.meta && project.meta.Type) || "Project",
+      role: details.role || (project.meta && project.meta.Role) || "Developer",
+      projectLink: details.projectLink || "#",
+      demoLink: details.demoLink || "#"
+    };
+  }
+
+  function getProjectImages(project) {
+    const media = project.media || [];
+    return media.map((item, index) => ({
+      src: item.src,
+      alt: item.alt || `${project.title} screenshot ${index + 1}`
+    }));
+  }
+
+  function createTechIcon(technology) {
+    const iconClass = techIconMap[technology.name] || "language-fallback-icon";
+    const icon = createElement("i", {
+      className: iconClass,
+      attrs: { "aria-hidden": "true" },
+      text: iconClass === "language-fallback-icon" ? technology.name.slice(0, 2).toUpperCase() : ""
+    });
+
+    return icon;
+  }
+
+  function createModalSlider(project, images) {
+    const fragment = document.createDocumentFragment();
+    const slider = createElement("div", { className: "project-preview-slider" });
+
+    if (!images.length) {
+      slider.appendChild(
+        createElement("div", {
+          className: "project-preview-empty",
+          text: "Project preview coming soon."
+        })
+      );
+      fragment.appendChild(slider);
+      return fragment;
+    }
+
+    const track = createElement("div", { className: "project-preview-track" });
+    const dots = createElement("div", {
+      className: "project-slider-dots",
+      attrs: { "aria-label": `${project.title} screenshots` }
+    });
+
+    function setActiveSlide(activeIndex) {
+      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+      [...track.children].forEach((slide, index) => {
+        slide.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
+      });
+
+      [...dots.children].forEach((dot, index) => {
+        dot.classList.toggle("active", index === activeIndex);
+        dot.setAttribute("aria-pressed", index === activeIndex ? "true" : "false");
+      });
+    }
+
+    images.forEach((image, index) => {
+      const figure = createElement("figure", {
+        className: "project-preview-slide",
+        attrs: { "aria-hidden": index === 0 ? "false" : "true" }
+      });
+      figure.appendChild(
+        createElement("img", {
+          attrs: {
+            src: image.src,
+            alt: image.alt,
+            loading: index === 0 ? "eager" : "lazy",
+            decoding: "async"
+          }
+        })
+      );
+      track.appendChild(figure);
+
+      dots.appendChild(
+        createElement("button", {
+          className: index === 0 ? "active" : "",
+          attrs: {
+            type: "button",
+            "aria-label": `Show screenshot ${index + 1}`,
+            "aria-pressed": index === 0 ? "true" : "false"
+          }
+        })
+      );
+    });
+
+    dots.addEventListener("click", (event) => {
+      const dot = event.target instanceof Element ? event.target.closest("button") : null;
+      if (!dot) return;
+      setActiveSlide([...dots.children].indexOf(dot));
+    });
+
+    slider.appendChild(track);
+    fragment.append(slider, dots);
+    return fragment;
+  }
+
+  function createAboutSection(project) {
+    const section = createElement("section", { className: "project-about-section" });
+    section.appendChild(createElement("h2", { text: "About the Project" }));
+
+    project.about.forEach((paragraph, index) => {
+      section.appendChild(
+        createElement("p", {
+          text: paragraph,
+          attrs: index === 0 ? { id: "project-description" } : {}
+        })
+      );
+    });
+
+    return section;
+  }
+
+  function createTechList(technologies) {
+    const list = createElement("ul", { className: "language-list" });
+
+    technologies.forEach((technology) => {
+      const item = createElement("li");
+      item.append(createTechIcon(technology), createElement("span", { text: technology.name }));
+      list.appendChild(item);
+    });
+
+    return list;
+  }
+
+  function createActionLinks(project) {
+    const actions = createElement("div", { className: "project-side-buttons" });
+    const projectLink = createElement("a", {
+      className: "project-link-button",
+      text: "Link to Project",
+      attrs: { href: project.projectLink || "#" }
+    });
+    const demoLink = createElement("a", {
+      className: "project-demo-button",
+      text: "Link to Demo",
+      attrs: { href: project.demoLink || "#" }
+    });
+
+    if ((project.projectLink || "#") !== "#") {
+      projectLink.setAttribute("target", "_blank");
+      projectLink.setAttribute("rel", "noreferrer");
+    }
+
+    if ((project.demoLink || "#") !== "#") {
+      demoLink.setAttribute("target", "_blank");
+      demoLink.setAttribute("rel", "noreferrer");
+    }
+
+    actions.append(projectLink, demoLink);
+    actions.addEventListener("click", (event) => {
+      const link = event.target instanceof Element ? event.target.closest("a") : null;
+      if (link && link.getAttribute("href") === "#") {
+        event.preventDefault();
+      }
+    });
+
+    return actions;
+  }
+
+  function getProjectDetailUrl(projectId) {
+    return `project-detail.html?id=${encodeURIComponent(projectId)}`;
+  }
+
+  function setupProjectNavigation() {
+    function openProject(projectId) {
+      if (!projectMap.has(projectId)) return;
+      window.location.href = getProjectDetailUrl(projectId);
+    }
+
+    document.addEventListener("click", (event) => {
+      const trigger = event.target instanceof Element
+        ? event.target.closest(".project-trigger")
+        : null;
+      if (trigger) {
+        event.preventDefault();
+        openProject(trigger.dataset.projectId);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const trigger = event.target instanceof Element
+        ? event.target.closest(".project-trigger")
+        : null;
+      if (!trigger || trigger.tagName === "BUTTON") return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openProject(trigger.dataset.projectId);
       }
     });
   }
 
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeProject();
-    }
+  document.addEventListener("DOMContentLoaded", () => {
+    renderCarousel();
+    renderProjectGrid();
+    setupProjectNavigation();
+    document.dispatchEvent(new CustomEvent("portfolio:projects-ready"));
   });
-});
+})();
