@@ -29,6 +29,20 @@
   --theme-charcoal: var(--color-charcoal);
 
   --font-body: "Plus Jakarta Sans", Arial, sans-serif;
+  --font-pro: "DM Sans", Arial, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
+
+  --pro-background: #f8f7f4;
+  --pro-foreground: #141210;
+  --pro-card: #ffffff;
+  --pro-muted: #eceae4;
+  --pro-muted-foreground: #7c7670;
+  --pro-border: rgba(20, 18, 16, 0.1);
+  --pro-border-strong: rgba(20, 18, 16, 0.22);
+  --pro-accent: #4f7fff;
+  --pro-primary: #141210;
+  --pro-primary-foreground: #f8f7f4;
 
   --radius-sm: 8px;
   --radius-md: 12px;
