@@ -5,7 +5,8 @@
     return;
   }
 
-  const projectMap = new Map(data.projects.map((project) => [project.id, project]));
+  const projects = data.projects || [];
+  const projectMap = new Map(projects.map((project) => [project.id, project]));
   const detailDataById = {
     oportunet: {
       category: "COLLABORATION",
@@ -179,11 +180,11 @@
       type: "Personal Website",
       role: "Frontend Developer",
       summary:
-        "A modern software engineering portfolio built to showcase technical skills, projects, education, journey, and professional growth.",
+        "A modern software engineering portfolio built to showcase technical skills, projects, journey, and professional growth.",
       about: [
         "Personal Portfolio is a modern software engineering portfolio built to showcase my technical skills, projects, and professional journey.",
         "The portfolio presents my identity as a final-year Computer Science student, software engineering candidate, AI enthusiast, full stack learner, and problem solver.",
-        "The project includes sections for home, projects, skills, journey, education, why hire me, about me, contact, and footer.",
+        "The project includes sections for home, projects, skills, journey, why hire me, about me, contact, and footer.",
         "This project demonstrates frontend development, responsive design, personal branding, portfolio organisation, and attention to user interface design."
       ],
       architecture: [
@@ -364,12 +365,35 @@
 
   function createProjectImage(project, className, options = {}) {
     const cover = getProjectCover(project);
+    const isProjectCardImage = className === "project-visual";
+    const cardImages = isProjectCardImage ? (project.media || []).slice(0, 2) : [];
     const wrapper = createElement("div", {
-      className: cover ? `${className} has-image` : className,
+      className: cover
+        ? `${className} has-image${cardImages.length > 1 ? " is-rotating" : ""}`
+        : className,
       attrs: cover ? {} : { "aria-hidden": "true" }
     });
 
-    if (cover) {
+    if (cover && cardImages.length > 1) {
+      const track = createElement("div", { className: "project-visual-track" });
+      const rotatingImages = [...cardImages, cardImages[0]];
+
+      rotatingImages.forEach((image, index) => {
+        track.appendChild(
+          createElement("img", {
+            className: `project-visual-frame project-visual-frame-${(index % cardImages.length) + 1}`,
+            attrs: {
+              src: image.src,
+              alt: image.alt,
+              loading: index === 0 ? options.loading || "lazy" : "lazy",
+              decoding: "async"
+            }
+          })
+        );
+      });
+
+      wrapper.appendChild(track);
+    } else if (cover) {
       wrapper.appendChild(
         createElement("img", {
           attrs: {
@@ -419,7 +443,7 @@
     carousel.replaceChildren();
     controls.replaceChildren();
 
-    const featuredProjects = data.projects.filter((project) => Boolean(getProjectCover(project)));
+    const featuredProjects = projects.filter((project) => Boolean(getProjectCover(project)));
 
     featuredProjects.forEach((project, index) => {
       const slide = createElement("button", {
@@ -459,9 +483,9 @@
 
     grid.replaceChildren();
 
-    data.projects.forEach((project) => {
+    projects.forEach((project, index) => {
       const article = createElement("article", {
-        className: `static-card theme-${project.theme} project-trigger reveal-item`,
+        className: `static-card ${index < 2 ? "is-featured" : "is-compact"} project-trigger reveal-item`,
         attrs: {
           role: "button",
           tabindex: "0",
@@ -471,35 +495,43 @@
       });
       const body = createElement("div", { className: "static-card-body" });
       const titleRow = createElement("div", { className: "card-title-row" });
-      const statusText = project.cardFacts[1] || project.status;
+      const statusText = project.cardFacts && project.cardFacts[1] || project.status || "";
       const titleMain = createElement("div", { className: "card-title-main" });
+      titleMain.dataset.index = String(index + 1).padStart(2, "0");
       const statusBadge = createElement("span", {
         className: "card-status-badge",
-        text: statusText
+        text: [project.status || statusText, project.kicker || project.cardFacts && project.cardFacts[0]]
+          .filter(Boolean)
+          .join(" | ")
       });
-      const skillsCount = Math.min(project.learnings.length, 2);
+      const dateBadge = createElement("span", {
+        className: "card-date-badge",
+        text: project.cardDate || project.meta && project.meta.Date || ""
+      });
       const statusLine = createElement("div", { className: "project-status-line" });
       const detailRow = createElement("div", { className: "card-detail-row" });
 
-      titleMain.appendChild(createElement("h3", { className: "card-title", text: project.title }));
+      titleMain.append(
+        createElement("h3", { className: "card-title", text: project.title }),
+        statusBadge
+      );
 
       titleRow.append(
         titleMain,
-        statusBadge
+        dateBadge
       );
 
       statusLine.append(
         createElement("span", { className: `status-dot ${getStatusTone(statusText)}` }),
-        createElement("span", { text: `${skillsCount} skills learned` })
+        createElement("span", { text: project.description })
       );
 
-      [project.kicker, project.cardFacts[2]].filter(Boolean).forEach((detail) => {
+      (project.tech || project.cardFacts || []).slice(0, index < 2 ? 4 : 3).filter(Boolean).forEach((detail) => {
         detailRow.appendChild(createElement("span", { className: "card-detail-item", text: detail }));
       });
 
       body.append(
         titleRow,
-        createElement("p", { className: "project-kicker", text: project.cardFacts[0] || project.kicker }),
         statusLine,
         detailRow,
         createProjectAffordance("View details")
@@ -512,19 +544,19 @@
 
   function getProjectDetails(project) {
     const details = detailDataById[project.id] || {};
-    const technologyNames = details.tech || project.tech || [];
+    const technologyNames = project.tech || details.tech || [];
 
     return {
-      ...project,
       ...details,
-      features: details.features || project.features || [],
-      technologies: details.technologies || technologyNames.map((name) => ({ name })),
+      ...project,
+      features: project.features || details.features || [],
+      technologies: project.technologies || details.technologies || technologyNames.map((name) => ({ name })),
       about: details.about || [project.description].filter(Boolean),
       architecture: details.architecture || [project.meta && project.meta.Focus].filter(Boolean),
-      type: details.type || (project.meta && project.meta.Type) || "Project",
-      role: details.role || (project.meta && project.meta.Role) || "Developer",
-      projectLink: details.projectLink || "#",
-      demoLink: details.demoLink || "#"
+      type: project.meta && project.meta.Type || details.type || "Project",
+      role: project.meta && project.meta.Role || details.role || "Developer",
+      projectLink: project.projectLink || details.projectLink || "#",
+      demoLink: project.demoLink || details.demoLink || "#"
     };
   }
 
@@ -683,14 +715,127 @@
     return actions;
   }
 
-  function getProjectDetailUrl(projectId) {
-    return `project-detail.html?id=${encodeURIComponent(projectId)}`;
+  let activeProjectModal = null;
+  let previouslyFocusedElement = null;
+
+  function createProjectInfoBox(title, items) {
+    const box = createElement("section", { className: "languages-box" });
+    const list = createElement("ul", { className: "project-info-list" });
+
+    box.appendChild(createElement("h3", { text: title }));
+    items.filter((item) => item && item.value).forEach((item) => {
+      const row = createElement("li");
+      row.append(
+        createElement("span", { text: item.label }),
+        createElement("strong", { text: item.value })
+      );
+      list.appendChild(row);
+    });
+
+    box.appendChild(list);
+    return box;
+  }
+
+  function closeProjectModal() {
+    if (!activeProjectModal) return;
+
+    activeProjectModal.remove();
+    activeProjectModal = null;
+    document.body.classList.remove("modal-open");
+    document.removeEventListener("keydown", handleProjectModalKeydown);
+
+    if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === "function") {
+      previouslyFocusedElement.focus();
+    }
+  }
+
+  function handleProjectModalKeydown(event) {
+    if (event.key === "Escape") {
+      closeProjectModal();
+    }
+  }
+
+  function openProjectModal(projectId) {
+    const sourceProject = projectMap.get(projectId);
+    if (!sourceProject) return;
+
+    closeProjectModal();
+    previouslyFocusedElement = document.activeElement;
+
+    const project = getProjectDetails(sourceProject);
+    const overlay = createElement("div", { className: "project-modal-overlay" });
+    const card = createElement("article", {
+      className: "project-detail-card",
+      attrs: {
+        role: "dialog",
+        "aria-modal": "true",
+        "aria-labelledby": "project-modal-title",
+        "aria-describedby": "project-description"
+      }
+    });
+    const closeButton = createElement("button", {
+      className: "project-close",
+      html: "&times;",
+      attrs: {
+        type: "button",
+        "aria-label": "Close project details"
+      }
+    });
+    const left = createElement("div", { className: "project-detail-left" });
+    const side = createElement("aside", { className: "project-detail-side" });
+    const header = createElement("section", { className: "project-about-section project-modal-heading" });
+    const techBox = createElement("section", { className: "languages-box" });
+
+    header.append(
+      createElement("p", {
+        className: "project-modal-kicker",
+        text: [project.status, project.kicker].filter(Boolean).join(" | ")
+      }),
+      createElement("h1", { text: project.title, attrs: { id: "project-modal-title" } }),
+      createElement("p", { text: project.summary || project.description })
+    );
+
+    techBox.append(
+      createElement("h3", { text: "Technologies" }),
+      createTechList(project.technologies || [])
+    );
+
+    left.append(
+      createModalSlider(project, getProjectImages(project)),
+      header,
+      createAboutSection(project)
+    );
+
+    side.append(
+      createProjectInfoBox("Project Details", [
+        { label: "Status", value: project.status },
+        { label: "Type", value: project.type },
+        { label: "Role", value: project.role },
+        { label: "Date", value: project.cardDate }
+      ]),
+      techBox,
+      createActionLinks(project)
+    );
+
+    card.append(closeButton, left, side);
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    document.body.classList.add("modal-open");
+    activeProjectModal = overlay;
+
+    closeButton.addEventListener("click", closeProjectModal);
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) {
+        closeProjectModal();
+      }
+    });
+    document.addEventListener("keydown", handleProjectModalKeydown);
+    closeButton.focus();
   }
 
   function setupProjectNavigation() {
     function openProject(projectId) {
-      if (!projectMap.has(projectId)) return;
-      window.location.href = getProjectDetailUrl(projectId);
+      openProjectModal(projectId);
     }
 
     document.addEventListener("click", (event) => {

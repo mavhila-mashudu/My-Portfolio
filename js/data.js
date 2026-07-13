@@ -5,52 +5,20 @@ window.portfolioData = {
     role: "Software Engineer",
     summary:
       "Final-year Computer Science student at the University of the Witwatersrand.",
-    actions: [
-      { label: "View Projects", href: "#projects", style: "primary" },
-      { label: "View CV", href: "assets/docs/output.pdf", style: "secondary", target: "_blank" },
-      { label: "Email Me", href: "mailto:mashudumavhila@gmail.com", style: "secondary" }
-    ],
     highlights: [
-      { value: "7+", label: "Software projects" },
+      { value: "3+", label: "Quality projects" },
       { value: "Wits", label: "Final-year CS" },
       { value: "COMS1", label: "Tutor and mentor" }
     ],
-    focus: ["AI", "Full Stack", "System Design", "Clean Code"]
-  },
-
-  sections: {
-    projects: {
-      eyebrow: "Selected work",
-      title: "Selected Projects",
-      subtitle:
-        "Rotating featured work and refined project tiles. Open any project for the full technical story, features, stack, and lessons."
-    },
-    skills: {
-      eyebrow: "Capabilities",
-      title: "Skills",
-      subtitle:
-        "A practical mix of programming foundations, web systems, AI, architecture, communication, and teamwork."
-    },
-    journey: {
-      eyebrow: "Growth timeline",
-      title: "My Journey",
-      subtitle:
-        "A compact path from academic foundation to tutoring, team projects, and software engineering delivery."
-    },
-    education: {
-      eyebrow: "Education",
-      title: "Academic Background",
-      subtitle: "Computer Science training backed by strong mathematics and consistent project work."
-    }
+    focus: ["Full Stack Software Engineer"]
   },
 
   projects: [
     {
       id: "oportunet",
       title: "Oportunet",
-      theme: "moss",
-      icon: "folder",
       cardFacts: ["Collaboration", "Complete", "HTML, CSS, JS, Firebase"],
+      cardDate: "2026",
       media: [
         {
           src: "assets/images/oportunet1.png",
@@ -82,9 +50,7 @@ window.portfolioData = {
         "HTML",
         "CSS",
         "JavaScript",
-        "Firebase Authentication",
-        "Firestore",
-        "Firebase Functions",
+        "Firebase",
         "EmailJS"
       ],
       learningsTitle: "What I Learned",
@@ -107,9 +73,8 @@ window.portfolioData = {
     {
       id: "wits-ai-snake",
       title: "Wits AI Snake",
-      theme: "forest",
-      icon: "layers",
-      cardFacts: ["University competition", "Complete", "Java, AI, Algorithms"],
+      cardFacts: ["University competition", "Complete", "Java, Algorithms"],
+      cardDate: "2025",
       media: [
         {
           src: "assets/images/snake1.png",
@@ -134,7 +99,7 @@ window.portfolioData = {
         "Opponent prediction",
         "Adaptive behaviour"
       ],
-      tech: ["Java", "Algorithms", "Artificial Intelligence", "Data Structures"],
+      tech: ["Java", "Algorithms"],
       learningsTitle: "What I Learned",
       learnings: [
         "Heuristic search",
@@ -152,9 +117,8 @@ window.portfolioData = {
     {
       id: "foodbridge-sa",
       title: "FoodBridge SA",
-      theme: "rust",
-      icon: "tool",
-      cardFacts: ["Personal", "In Progress", "React, Express, MySQL"],
+      cardFacts: ["Personal", "In Progress", "React, CSS, HTML, MySQL"],
+      cardDate: "Present",
       media: [
         {
           src: "assets/images/foodbridge1.png",
@@ -177,12 +141,10 @@ window.portfolioData = {
         "Authentication planning",
         "Donation and distribution flow"
       ],
-      tech: ["React", "JavaScript", "Express", "MySQL"],
+      tech: ["React", "HTML", "CSS", "MySQL"],
       learningsTitle: "Focus Areas",
       learnings: [
         "Full stack development",
-        "Authentication",
-        "Role-based systems",
         "Software architecture"
       ],
       meta: {
@@ -194,23 +156,22 @@ window.portfolioData = {
     {
       id: "uniapply-sa",
       title: "UniApply SA",
-      theme: "taupe",
-      icon: "school",
-      cardFacts: ["Collaboration", "In Progress", "Node.js, PostgreSQL"],
+      cardFacts: ["Collaboration", "In Progress", "HTML, CSS, JavaScript, Node.js, PostgreSQL"],
+      cardDate: "Present",
       media: [
         {
-          src: "assets/images/UniApply1.png",
+          src: "assets/images/uni1.png",
           alt: "UniApply SA student application interface"
         },
         {
-          src: "assets/images/UniApply2.png",
+          src: "assets/images/uni2.png",
           alt: "UniApply SA application dashboard and upload flow"
         }
       ],
       kicker: "Team project",
       status: "Currently In Development Team Project",
       description:
-        "UniApply SA is a platform designed to simplify university applications for Grade 12 students, including authentication, student applications, document uploads, and secure backend architecture.",
+        "UniApply SA is a platform for applying to any SA University undergraduate programs. This application includes  document uploads, and secure authentication and backend architecture.",
       features: [
         "Student authentication",
         "Student application workflows",
@@ -226,12 +187,10 @@ window.portfolioData = {
         "CSS",
         "JavaScript",
         "Node.js",
-        "Express",
         "PostgreSQL",
         "Supabase",
-        "Cloudinary",
         "Vercel",
-        "Render"
+
       ],
       learningsTitle: "Current Focus",
       learnings: [
@@ -247,37 +206,10 @@ window.portfolioData = {
       }
     },
     {
-      id: "personal-portfolio",
-      title: "Personal Portfolio",
-      theme: "charcoal",
-      icon: "panel",
-      cardFacts: ["Personal", "Complete", "HTML, CSS, JS"],
-      kicker: "Portfolio project",
-      status: "Completed",
-      description:
-        "A modern software engineering portfolio built to showcase my technical skills, projects, and professional journey.",
-      features: [
-        "Responsive layout",
-        "Featured project carousel",
-        "Project detail modal",
-        "Skills and journey sections",
-        "Accessible contact links"
-      ],
-      tech: ["HTML", "CSS", "JavaScript"],
-      learningsTitle: "Focus Areas",
-      learnings: ["Responsive design", "Modern UI", "Performance", "Accessibility"],
-      meta: {
-        Type: "Personal portfolio",
-        Role: "Designer and developer",
-        Focus: "Project storytelling and frontend polish"
-      }
-    },
-    {
       id: "country-explorer",
       title: "Country Explorer",
-      theme: "moss",
-      icon: "globe",
       cardFacts: ["Personal", "Complete", "JS, Serverless API"],
+      cardDate: "2026",
       media: [
         {
           src: "assets/images/country1.png",
@@ -302,7 +234,7 @@ window.portfolioData = {
         "Serverless backend architecture",
         "Secure API key management"
       ],
-      tech: ["HTML", "CSS", "JavaScript", "Vercel Serverless Functions"],
+      tech: ["HTML", "CSS", "JavaScript", "Vercel"],
       learningsTitle: "Focus Areas",
       learnings: [
         "API-backed search",
@@ -319,9 +251,8 @@ window.portfolioData = {
     {
       id: "music-tracker",
       title: "Music Tracker",
-      theme: "rust",
-      icon: "music",
-      cardFacts: ["Practice project", "Skill-building", "JavaScript"],
+      cardFacts: ["Practice project", "Skill-building", "HTML, CSS, JavaScript"],
+      cardDate: "2026",
       media: [
         {
           src: "assets/images/music1.png",
@@ -342,7 +273,7 @@ window.portfolioData = {
         "Frontend state handling",
         "Small project iteration"
       ],
-      tech: ["JavaScript"],
+      tech: ["HTML" , "CSS", "JavaScript"],
       learningsTitle: "Focus Areas",
       learnings: [
         "JavaScript fundamentals",
@@ -357,159 +288,244 @@ window.portfolioData = {
     }
   ],
 
-  skills: [
-    {
-      title: "Programming & Engineering",
-      items: [
-        "Python, Java, C++, C, JavaScript",
-        "Data Structures, Algorithms, Algorithm Analysis",
-        "Clean Code, Maintainability, Debugging",
-        "Software Design and Architecture"
+  skills: {
+    technical: {
+      title: "Technical Skills",
+      subtitle:
+        "Languages, frameworks, platforms, and engineering foundations I use to build maintainable software.",
+      groups: [
+        {
+          title: "Languages",
+          items: [
+            { name: "Python", icon: "devicon-python-plain colored" },
+            { name: "Java", icon: "devicon-java-plain colored" },
+            { name: "C++", icon: "devicon-cplusplus-plain colored" },
+            { name: "C", icon: "devicon-c-plain colored" },
+            { name: "JavaScript", icon: "devicon-javascript-plain colored" }
+          ]
+        },
+        {
+          title: "Frontend & Backend",
+          items: [
+            { name: "HTML", icon: "devicon-html5-plain colored" },
+            { name: "CSS", icon: "devicon-css3-plain colored" },
+            { name: "React", icon: "devicon-react-original colored" },
+            { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+            { name: "Express", icon: "devicon-express-original" },
+          ]
+        },
+        {
+          title: "Data, Cloud & Tools",
+          items: [
+            { name: "Firebase", icon: "devicon-firebase-plain colored" },
+            { name: "Supabase", icon: "devicon-supabase-plain colored" },
+            { name: "MySQL", icon: "devicon-mysql-plain colored" },
+            { name: "Vercel", icon: "devicon-vercel-original" },
+            
+          ]
+        }
       ]
     },
-    {
-      title: "Web & Data",
+    soft: {
+      title: "Soft Skills",
+      subtitle:
+        "The collaboration habits and communication skills that help teams move clearly and consistently.",
       items: [
-        "HTML, CSS, React, Node.js, Express",
-        "REST APIs, Firebase, Firestore, Supabase",
-        "MySQL, PostgreSQL, Vercel, Render",
-        "Responsive Interfaces and Serverless Functions"
-      ]
-    },
-    {
-      title: "AI & Collaboration",
-      items: [
-        "Artificial Intelligence and Optimization",
-        "Pathfinding, Heuristic Search, Risk Analysis",
-        "Team Collaboration and Technical Communication",
-        "Tutoring, Mentorship, Adaptability"
+        {
+          title: "Team Collaboration",
+          description:
+            "Contributing in group projects with shared ownership, steady communication, and respect for team workflows."
+        },
+        {
+          title: "Technical Communication",
+          description:
+            "Explaining implementation choices, tradeoffs, bugs, and project progress in a clear, practical way."
+        },
+        {
+          title: "Tutoring & Mentorship",
+          description:
+            "Supporting first-year Computer Science students by breaking down difficult ideas with patience."
+        },
+        {
+          title: "Adaptability",
+          description:
+            "Learning unfamiliar tools quickly and adjusting to new project requirements without losing momentum."
+        },
+        {
+          title: "Problem Solving",
+          description:
+            "Using structured thinking to debug, reason through algorithms, and turn messy requirements into working software."
+        },
+        {
+          title: "Accountability",
+          description:
+            "Following through on tasks, documenting decisions, and caring about code that can be maintained after delivery."
+        }
       ]
     }
-  ],
+  },
 
   journey: [
     {
-      title: "Final Year and COMS1 Tutor",
-      date: "2026",
-      description:
-        "Became a First Year Computer Science Tutor while building projects such as Oportunet, FoodBridge SA, UniApply SA, Country Explorer, and this portfolio."
+      year: "2026",
+      stage: "Final Year",
+      items: [
+        "Became COMS1 Tutor",
+        "Completed Oportunet",
+        "Completed Country Explorer",
+        "Started UniApply SA",
+        "Started FoodBridge SA",
+        "Gained JavaScript, HTML, and CSS skills",
+        "Improved teamwork and collaboration",
+        "Improved problem solving"
+      ],
+      skills: ["JavaScript", "HTML", "CSS", "Teamwork", "Collaboration", "Problem Solving"]
     },
     {
-      title: "Artificial Intelligence and Software Development",
-      date: "2025",
-      description:
-        "Focused on AI, algorithm design, optimization, mobile development, and software engineering through projects including Wits AI Snake and a donation mobile application."
+      year: "2025",
+      stage: "Second Year",
+      items: [
+        "Completed Donation Mobile App",
+        "Completed Wits AI Snake Competition",
+        "Gained Java and MySQL skills",
+        "Improved teamwork and collaboration",
+        "Improved problem solving"
+      ],
+      skills: ["Java", "MySQL", "Teamwork", "Collaboration", "Problem Solving"]
     },
     {
-      title: "First Year at Wits",
-      date: "2024",
-      description:
-        "Started Computer Science at the University of the Witwatersrand and completed algorithm-focused projects including a Sudoku Solver and BFS shortest path project."
+      year: "2024",
+      stage: "First Year",
+      items: [
+        "Completed Sudoku Project",
+        "Completed Finding the Shortest Path Project",
+        "Gained problem solving",
+        "Gained adaptability",
+        "Did voluntary vacation work as a tutor for Grade 12 students"
+      ],
+      skills: ["Problem Solving", "Adaptability"]
     },
     {
-      title: "Grade 12 Foundation",
-      date: "2023",
-      description:
-        "Completed Grade 12 with an 85% average, achieved 100% in Mathematics, and volunteered as a Mathematics and Physical Sciences tutor."
+      year: "2023",
+      stage: "Matric",
+      items: [
+        "Achieved 85% Average",
+        "Achieved 100% in Mathematics"
+      ],
+      skills: []
     }
   ],
 
-  education: [
-    {
-      school: "University of the Witwatersrand",
-      date: "2024 - Present",
-      degree: "Computer Science, Final Year Computer Science Student",
-      description:
-        "Focused on Machine Learning, Parallel Computing, Software Design, Full Stack Development, and Software Architecture."
-    },
-    {
-      school: "Grade 12 Umalusi Certificate",
-      date: "2023",
-      degree: "85% average with 100% in Mathematics",
-      description:
-        "Built a strong analytical foundation and volunteered as a Mathematics and Physical Sciences tutor for Grade 12 learners."
-    }
-  ],
-
-  hireMe: {
-    eyebrow: "Why hire me",
-    title: "Reliable Foundations, Practical Delivery",
-    highlight:
-      "I combine academic depth, collaborative project experience, and a habit of building software I can explain, maintain, and improve.",
+  service: {
+    eyebrow: "Why Me",
+    title: "Why Me",
+    subtitle:
+      "I bring strong fundamentals, real project experience, and a growth mindset to every team I join.",
     reasons: [
       {
+        icon: "code",
         title: "Strong Software Engineering Foundation",
         description:
-          "My projects cover AI, algorithms, full stack applications, clean code, debugging, and maintainable development practices."
+          "I understand programming fundamentals, data structures, algorithms, software design, and clean code principles."
       },
       {
-        title: "Collaborative Team Experience",
+        icon: "rocket",
+        title: "Real Project Experience",
         description:
-          "I have worked on team projects such as Oportunet and UniApply SA, contributing through communication, version control, and shared problem solving."
+          "I have built and contributed to practical projects such as Oportunet, AI Snake, Country Explorer, FoodBridge SA, UniApply SA, and my personal portfolio."
       },
       {
-        title: "Effective Use of AI",
+        icon: "brain",
+        title: "Problem Solver",
         description:
-          "I use AI strategically to improve productivity while still understanding the architecture, code, debugging process, and long-term maintainability."
+          "I enjoy breaking down difficult problems and building solutions step by step, especially in AI, algorithms, and full stack development."
       },
       {
-        title: "Strong Problem Solver",
+        icon: "users",
+        title: "Team Collaboration",
         description:
-          "Wits AI Snake strengthened my ability to solve complex algorithmic problems with pathfinding, optimization, and strategic decision making."
+          "I have experience working in team projects, communicating ideas, fixing issues, and contributing to shared codebases."
       },
       {
-        title: "Adaptable Learner",
+        icon: "learn",
+        title: "Fast Learner",
         description:
-          "I pick up new technologies quickly, from React and cloud services to unfamiliar frameworks and project requirements."
+          "I am continuously improving my skills in JavaScript, React, backend development, and system design."
       },
       {
+        icon: "message",
         title: "Teaching and Communication",
         description:
-          "Tutoring first-year Computer Science students has improved my ability to explain technical concepts clearly and patiently."
+          "As a COMS1 tutor, I help students understand programming concepts, which has improved my communication and mentoring skills."
       }
     ]
   },
 
   about: {
-    eyebrow: "About me",
-    title: "Building Useful, Maintainable Software",
+    eyebrow: "ABOUT ME",
+    title: "About Me",
+    subtitle:
+      "A final-year Computer Science student passionate about building useful, scalable, and well-designed software.",
+    heading: "A final-year Computer Science student passionate about building useful, scalable, and well-designed software.",
     paragraphs: [
-      "I am a passionate Software Engineering student who enjoys building software that makes a real impact. Throughout my university journey I have worked on individual and collaborative projects ranging from Artificial Intelligence and algorithms to full stack web applications.",
-      "I have built multiple production-quality projects while continuously improving my understanding of software architecture, clean code principles, design patterns, debugging, and modern development practices. Beyond technical skills, I enjoy collaborating with others, mentoring students, and constantly learning new technologies."
+      "I am Mashudu Mavhila, a final-year Computer Science student at the University of the Witwatersrand. I enjoy building software that solves real problems, from web applications and AI projects to platforms that support education, food donation, and career opportunities.",
+      "My interests include Full Stack Software Engineering , System Design, and building clean user interfaces. I enjoy learning how systems are structured, how users interact with products, and how to turn ideas into working applications.",
+      "I have worked on projects such as Oportunet, AI Snake, Country Explorer, FoodBridge SA, UniApply SA, and my personal portfolio. These projects helped me improve my problem-solving, teamwork, communication, and software design skills.",
+      "As a COMS1 tutor, I also enjoy helping other students understand programming concepts. Teaching has helped me become better at explaining technical ideas clearly and working with different types of learners."
     ],
-    facts: [
-      "Final Year Computer Science Student",
-      "University of the Witwatersrand",
-      "7+ Software Engineering Projects",
-      "First Year Computer Science Tutor",
-      "Strong interest in Artificial Intelligence",
-      "Full Stack Web Development"
-    ]
+    closing:
+      "I am currently focused on growing as a Software Engineer and building projects that show strong fundamentals, clean design, and real-world impact.",
+    profile: {
+      name: "Mashudu Mavhila",
+      role: "Final-Year Computer Science Student",
+      photo: {
+        src: "assets/images/me.png",
+        alt: "Mashudu Mavhila"
+      },
+      universityLogo: {
+        src: "assets/icons/wits_logo.png",
+        alt: "University of the Witwatersrand logo"
+      },
+      facts: [
+        { label: "University", value: "University of the Witwatersrand" },
+        { label: "Focus", value: "Software Engineering"},
+        { label: "Experience", value: "COMS1 Tutor" },
+        { label: "Projects", value: "3+ Quality Projects" }
+      ],
+      tags: [
+        "JavaScript Software Engineer" ,
+      ]
+    }
   },
 
   contact: {
     eyebrow: "Contact",
     title: "Let's Connect",
     subtitle:
-      "I am available for graduate software engineering roles, internships, full stack opportunities, AI projects, backend development, and collaborative software engineering teams.",
+      "I am available for collaboration, graduate software engineering roles and internships. I come with a growing mindset, let's connect.",
     actions: [
       { label: "Email me", href: "mailto:mashudumavhila@gmail.com", style: "primary" },
-      { label: "Call me", href: "tel:+27691995022", style: "secondary" },
-      {
-        label: "Download CV",
-        href: "assets/docs/output.pdf",
-        style: "secondary",
-        download: "Mashudu-Mavhila-CV.pdf"
-      }
     ],
     details: [
       "Mashudu Mavhila",
       "Final Year Computer Science Student",
       "University of the Witwatersrand",
       "mashudumavhila@gmail.com",
-      "069 199 5022",
-      "South Africa"
     ],
-    footer: "Copyright 2026 Mashudu Mavhila. Built with precision at Wits."
+    socials: [
+      {
+        label: "LinkedIn",
+        value: "linkedin.com/in/mavhila-mashudu",
+        href: "https://www.linkedin.com/in/mavhila-mashudu",
+        icon: "linkedin"
+      },
+      {
+        label: "GitHub",
+        value: "github.com/mavhila-mashudu",
+        href: "https://github.com/mavhila-mashudu",
+        icon: "github"
+      }
+    ],
+    footer: "Copyright 2026 Mashudu Mavhila."
   }
 };
