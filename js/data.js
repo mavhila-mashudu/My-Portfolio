@@ -254,6 +254,49 @@ window.portfolioData = {
       }
     },
     {
+      id: "personal-portfolio",
+      title: "Personal Portfolio",
+      cardFacts: ["Personal", "Complete", "HTML, CSS, JavaScript"],
+      cardDate: "2026",
+      projectLink: "index.html",
+      media: [
+        {
+          src: "assets/images/portfolio1.png",
+          alt: "Personal Portfolio home and project showcase interface"
+        },
+        {
+          src: "assets/images/portfolio2.png",
+          alt: "Personal Portfolio about and contact section interface"
+        }
+      ],
+      kicker: "Portfolio project",
+      status: "Completed",
+      description:
+        "This professional software engineering portfolio designed to present my projects, technical skills, journey, experience, and contact information in a clean, polished web experience.",
+      features: [
+        "Professional project showcase",
+        "Responsive portfolio layout",
+        "Animated project cards",
+        "Skills presentation",
+        "About section",
+        "Contact section",
+        "Direct project links"
+      ],
+      tech: ["HTML", "CSS", "JavaScript"],
+      learningsTitle: "Focus Areas",
+      learnings: [
+        "Portfolio design",
+        "Responsive frontend development",
+        "Reusable data-driven rendering",
+        "Visual polish and interaction design"
+      ],
+      meta: {
+        Type: "Personal website",
+        Role: "Frontend developer",
+        Focus: "Personal branding, project presentation, and responsive UI"
+      }
+    },
+    {
       id: "music-tracker",
       title: "Music Tracker",
       cardFacts: ["Practice project", "Skill-building", "HTML, CSS, JavaScript"],
