@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mashudu Mavhila | Software Engineering Portfolio</title>
+  <title>Mashudu's Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
   <link rel="stylesheet" href="css/variables.css">
@@ -16,7 +16,41 @@
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav-brand" href="#top" aria-label="Mashudu Mavhila home">
+      <img src="assets/icons/wits_logo.png" alt="University of the Witwatersrand logo">
+      <strong>Mashudu Mavhila</strong>
+    </a>
+
+    <div class="site-nav-links">
+      <a href="#top">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#journey">Journey</a>
+      <a href="#why-hire-me">Service</a>
+      <a href="#about">About Me</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <header id="top" class="hero-section">
+    <div class="hero-topbar" aria-label="Portfolio summary">
+      <a class="hero-topbrand" href="#top" aria-label="Mashudu Mavhila home">
+        <img src="assets/icons/wits_logo.png" alt="University of the Witwatersrand logo">
+        <strong>Mashudu Mavhila</strong>
+      </a>
+
+      <div class="hero-toplinks">
+        <a href="#top">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#journey">Journey</a>
+        <a href="#why-hire-me">Service</a>
+        <a href="#about">About Me</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
     <div class="hero-content">
       <div class="hero-copy" id="hero-copy"></div>
       <figure class="hero-image-container" id="hero-board"></figure>
@@ -53,13 +87,8 @@
       <div class="timeline" id="timeline"></div>
     </section>
 
-    <section id="education" class="education-section">
-      <div class="section-header" id="education-header"></div>
-      <div class="edu-container" id="education-list"></div>
-    </section>
-
-    <section id="hire-me" class="hire-me-section">
-      <div class="hire-me-content" id="hire-me-content"></div>
+    <section id="why-hire-me" class="why-hire-section">
+      <div class="why-hire-content" id="why-hire-content"></div>
     </section>
 
     <section id="about" class="about-section">
