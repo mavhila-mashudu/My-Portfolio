@@ -19,6 +19,7 @@ window.portfolioData = {
       title: "Oportunet",
       cardFacts: ["Collaboration", "Complete", "HTML, CSS, JS, Firebase"],
       cardDate: "2026",
+      projectLink: "https://oportu-net.vercel.app/",
       media: [
         {
           src: "assets/images/oportunet1.png",
@@ -75,6 +76,7 @@ window.portfolioData = {
       title: "Wits AI Snake",
       cardFacts: ["University competition", "Complete", "Java, Algorithms"],
       cardDate: "2025",
+      projectLink: "https://github.com/mavhila-mashudu/AI-snake",
       media: [
         {
           src: "assets/images/snake1.png",
@@ -119,6 +121,7 @@ window.portfolioData = {
       title: "FoodBridge SA",
       cardFacts: ["Personal", "In Progress", "React, CSS, HTML, MySQL"],
       cardDate: "Present",
+      projectLink: "https://food-bridge-sa.vercel.app/",
       media: [
         {
           src: "assets/images/foodbridge1.png",
@@ -158,6 +161,7 @@ window.portfolioData = {
       title: "UniApply SA",
       cardFacts: ["Collaboration", "In Progress", "HTML, CSS, JavaScript, Node.js, PostgreSQL"],
       cardDate: "Present",
+      projectLink: "https://project-lzhx2.vercel.app/",
       media: [
         {
           src: "assets/images/uni1.png",
@@ -210,6 +214,7 @@ window.portfolioData = {
       title: "Country Explorer",
       cardFacts: ["Personal", "Complete", "JS, Serverless API"],
       cardDate: "2026",
+      projectLink: "https://api-consumption-and-dom-manipulatio.vercel.app/",
       media: [
         {
           src: "assets/images/country1.png",
@@ -253,6 +258,7 @@ window.portfolioData = {
       title: "Music Tracker",
       cardFacts: ["Practice project", "Skill-building", "HTML, CSS, JavaScript"],
       cardDate: "2026",
+      projectLink: "https://music-tracker-delta.vercel.app/",
       media: [
         {
           src: "assets/images/music1.png",
