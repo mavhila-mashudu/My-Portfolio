@@ -48,6 +48,11 @@ svg {
   display: block;
 }
 
+/* Let component styles control figure spacing after semantic HTML changes. */
+figure {
+  margin: 0;
+}
+
 /* Reset browser default list margins; section CSS controls spacing instead. */
 ul,
 ol {

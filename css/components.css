@@ -69,7 +69,17 @@
   align-items: center;
   gap: 0.35rem;
   justify-content: flex-end;
+  margin: 0;
   min-width: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Keep semantic navigation list items from adding browser-default layout. */
+.site-nav-links li,
+.hero-toplinks li {
+  display: flex;
+  flex: 0 0 auto;
 }
 
 /* Shared navigation link hit area and typography. */
@@ -2495,6 +2505,39 @@ main .section-subtitle {
   letter-spacing: 0.15em;
   text-align: left;
   text-transform: uppercase;
+}
+
+/* Footer copyright line with a compact inline SVG mark. */
+.footer-copyright {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+/* Circular copyright mark in the footer. */
+.footer-copyright-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+/* Copyright SVG inherits the muted footer color. */
+.footer-copyright-icon svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
 }
 
 /* Tablet adjustments for final project, skills, about, and contact grids. */
