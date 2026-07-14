@@ -1692,6 +1692,7 @@ main .section-subtitle {
   font-weight: 400;
   line-height: 1.7;
   overflow: hidden;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
 }
