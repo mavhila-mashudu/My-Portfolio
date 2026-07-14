@@ -44,6 +44,15 @@
     });
   }
 
+  // Builds the info icon used when a project card opens an in-page message.
+  function createInfoIcon() {
+    return createElement("span", {
+      className: "info-icon",
+      html:
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg>'
+    });
+  }
+
   // Gets the exact URL that a project card should open.
   function getProjectHref(project) {
     return project.projectLink || "#";
@@ -63,6 +72,55 @@
     }
 
     return attrs;
+  }
+
+  // Builds accessible button attributes for project cards that show a message.
+  function getProjectButtonAttrs(project) {
+    return {
+      type: "button",
+      "aria-label": `Show message for ${project.title}`
+    };
+  }
+
+  // Creates or reuses the live toast element used for project-card messages.
+  function getProjectMessageToast() {
+    let toast = document.querySelector(".project-message-toast");
+
+    if (!toast) {
+      toast = createElement("div", {
+        className: "project-message-toast",
+        attrs: {
+          role: "status",
+          "aria-live": "polite"
+        }
+      });
+      toast.hidden = true;
+      document.body.appendChild(toast);
+    }
+
+    return toast;
+  }
+
+  // Shows the project message briefly without navigating away from the page.
+  function showProjectMessage(message) {
+    const toast = getProjectMessageToast();
+    window.clearTimeout(showProjectMessage.hideTimer);
+
+    toast.textContent = message;
+    toast.hidden = false;
+    window.requestAnimationFrame(() => {
+      toast.classList.add("is-visible");
+    });
+
+    showProjectMessage.hideTimer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+
+      window.setTimeout(() => {
+        if (!toast.classList.contains("is-visible")) {
+          toast.hidden = true;
+        }
+      }, 220);
+    }, 2600);
   }
 
   // Returns the first project image so each card has a cover image.
@@ -118,14 +176,14 @@
     return wrapper;
   }
 
-  // Creates the small visual arrow affordance on each project card.
-  function createProjectAffordance() {
+  // Creates the small visual affordance on each project card.
+  function createProjectAffordance(project) {
     const affordance = createElement("span", {
       className: "card-link",
       attrs: { "aria-hidden": "true" }
     });
 
-    affordance.appendChild(createArrowIcon());
+    affordance.appendChild(project.popupMessage ? createInfoIcon() : createArrowIcon());
     return affordance;
   }
 
@@ -137,13 +195,21 @@
     grid.replaceChildren();
 
     projects.forEach((project, index) => {
-      // The whole card is the link, so clicks go straight to project.projectLink.
-      const card = createElement("a", {
-        className: "static-card reveal-item",
-        attrs: {
-          ...getProjectLinkAttrs(project, "Open")
-        }
+      const showsMessage = Boolean(project.popupMessage);
+      // Most cards are links; the portfolio card becomes a button because it shows a message.
+      const card = createElement(showsMessage ? "button" : "a", {
+        className: `static-card reveal-item${showsMessage ? " is-message-card" : ""}`,
+        attrs: showsMessage
+          ? getProjectButtonAttrs(project)
+          : getProjectLinkAttrs(project, "Open")
       });
+
+      if (showsMessage) {
+        card.addEventListener("click", () => {
+          showProjectMessage(project.popupMessage);
+        });
+      }
+
       const body = createElement("div", { className: "static-card-body" });
       const titleRow = createElement("div", { className: "card-title-row" });
       const titleMain = createElement("div", { className: "card-title-main" });
@@ -185,7 +251,7 @@
         titleRow,
         statusLine,
         detailRow,
-        createProjectAffordance()
+        createProjectAffordance(project)
       );
 
       card.append(createProjectImage(project, "project-visual"), body);

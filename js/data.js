@@ -153,6 +153,7 @@ window.portfolioData = {
       type: "Personal Website",
       cardDate: "2026",
       projectLink: "index.html",
+      popupMessage: "This is the portfolio",
       media: [
         {
           src: "assets/images/portfolio1.png",

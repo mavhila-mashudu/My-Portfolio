@@ -473,6 +473,20 @@
   transition: transform 180ms ease;
 }
 
+/* Info icon used by project cards that open an in-page message. */
+.info-icon {
+  display: inline-flex;
+  margin: auto;
+  color: currentColor;
+}
+
+/* Keep the info affordance crisp and unrotated. */
+.info-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke-width: 1.8;
+}
+
 /* Baseline skills section background. */
 .skills-section {
   background:
@@ -1588,6 +1602,8 @@ main .section-subtitle {
   --work-hover: #eef4ff;
   --work-hover-border: #b8ccff;
   position: relative;
+  width: 100%;
+  appearance: none;
   color: inherit;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -1598,6 +1614,9 @@ main .section-subtitle {
   box-shadow: none;
   cursor: pointer;
   overflow: hidden;
+  padding: 0;
+  font: inherit;
+  text-align: left;
   text-decoration: none;
   transition: background 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
 }
@@ -1608,6 +1627,43 @@ main .section-subtitle {
   background: linear-gradient(135deg, var(--work-hover) 0%, #f8fbff 58%, var(--pro-background) 100%);
   box-shadow: 0 0 0 1px rgba(79, 127, 255, 0.16), 0 18px 42px rgba(79, 127, 255, 0.12);
   transform: none;
+}
+
+/* Small in-page popup used by the portfolio project card. */
+.project-message-toast {
+  position: fixed;
+  right: var(--gutter);
+  bottom: 1.25rem;
+  z-index: 100;
+  max-width: min(320px, calc(100vw - 2rem));
+  border: 1px solid var(--pro-border-strong);
+  background: var(--pro-card);
+  color: var(--pro-foreground);
+  padding: 0.9rem 1rem;
+  font-family: var(--font-pro);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  box-shadow: 0 18px 42px rgba(20, 18, 16, 0.14);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+/* Visible state for the portfolio project popup. */
+.project-message-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Let the popup use the full mobile width minus page gutters. */
+@media (max-width: 768px) {
+  .project-message-toast {
+    right: 1rem;
+    left: 1rem;
+    bottom: 1rem;
+    max-width: none;
+  }
 }
 
 /* Final project card text column. */

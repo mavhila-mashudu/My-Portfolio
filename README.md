@@ -7,7 +7,7 @@ The design follows a clean professional portfolio style with large editorial typ
 ## Sections
 
 - **Home** - Hero introduction with summary highlights.
-- **Selected Projects** - Project cards generated from `js/data.js`; each card opens the project link directly.
+- **Selected Projects** - Project cards generated from `js/data.js`; external projects open their links directly, while the portfolio card shows an in-page message.
 - **Skills** - Technical and soft skills grouped into readable panels.
 - **Journey** - Timeline of academic and project milestones.
 - **Why Me** - Service/value cards explaining strengths.
@@ -31,7 +31,7 @@ The design follows a clean professional portfolio style with large editorial typ
 
 - Data-driven portfolio content.
 - Semantic HTML page structure.
-- Direct project-card navigation to live sites or repositories.
+- Direct project-card navigation to live sites or repositories, with an in-page message for the portfolio card.
 - Responsive project cards with fixed image frames.
 - Rotating project image pairs with reduced-motion support.
 - Professional typography and consistent card styling.
