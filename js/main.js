@@ -481,7 +481,17 @@
     );
     container.replaceChildren(label, panel);
 
-    footer.textContent = contact.footer;
+    // Footer stays data-driven while adding a decorative copyright mark.
+    const copyrightLine = createElement("small", { className: "footer-copyright" });
+    copyrightLine.append(
+      createElement("span", {
+        className: "footer-copyright-icon",
+        html: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M14.4 9.8a3.5 3.5 0 1 0 0 4.4"></path></svg>',
+        attrs: { "aria-hidden": "true" }
+      }),
+      createElement("span", { text: contact.footer })
+    );
+    footer.replaceChildren(copyrightLine);
   }
 
   // Shows the fixed navigation only after the user scrolls away from the hero top.
