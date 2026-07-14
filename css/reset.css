@@ -1,15 +1,18 @@
+/* Make element sizing predictable by including borders and padding in dimensions. */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Keep document scrolling smooth for anchor navigation. */
 html {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
 }
 
+/* Apply the global base font and page background. */
 body {
   margin: 0;
   min-width: 320px;
@@ -18,33 +21,40 @@ body {
   background: var(--color-surface);
 }
 
+/* Prevent background scrolling if a modal class is ever applied. */
 body.modal-open {
   overflow: hidden;
 }
 
+/* Let links and buttons inherit the surrounding typography. */
 button,
 a {
   font: inherit;
 }
 
+/* Keep links visually controlled by component styles. */
 a {
   color: inherit;
 }
 
+/* Preserve the expected pointer cursor for clickable buttons. */
 button {
   cursor: pointer;
 }
 
+/* Remove inline media spacing and make SVGs/images easier to size. */
 img,
 svg {
   display: block;
 }
 
+/* Reset browser default list margins; section CSS controls spacing instead. */
 ul,
 ol {
   margin: 0;
 }
 
+/* Prevent long words or URLs from breaking layouts. */
 p,
 h1,
 h2,
@@ -52,15 +62,18 @@ h3 {
   overflow-wrap: break-word;
 }
 
+/* Provide a visible keyboard focus ring across interactive elements. */
 :focus-visible {
   outline: 3px solid var(--color-orange);
   outline-offset: 4px;
 }
 
+/* Enforce hidden elements staying removed from layout. */
 [hidden] {
   display: none !important;
 }
 
+/* Respect reduced-motion preferences by effectively disabling animations/transitions. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

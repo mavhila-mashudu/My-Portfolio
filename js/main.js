@@ -1,10 +1,13 @@
 (function () {
+  // Read the portfolio content object that data.js exposes globally.
   const data = window.portfolioData;
 
+  // Stop rendering if the data file failed to load before this script.
   if (!data) {
     return;
   }
 
+  // Creates an element and applies optional class names, text, HTML, and attributes.
   function createElement(tag, options = {}) {
     const element = document.createElement(tag);
 
@@ -29,71 +32,31 @@
     return element;
   }
 
+  // Builds a standard anchor link for contact actions such as email.
   function createActionLink(action, className) {
-    const attrs = { href: action.href };
-
-    if (action.target) {
-      attrs.target = action.target;
-      attrs.rel = "noopener";
-    }
-
-    if (action.download) {
-      attrs.download = action.download;
-    }
-
     return createElement("a", {
       className,
       text: action.label,
-      attrs
+      attrs: { href: action.href }
     });
   }
 
+  // Renders the small numbered label used at the top of each main portfolio section.
   function renderSectionHeader(containerId, section) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    const sectionDefaults = {
-      "projects-header": {
-        eyebrow: "Selected Projects",
-        title: "Selected Projects",
-        subtitle: "A focused selection of practical software projects."
-      },
-      "skills-header": {
-        eyebrow: "Capabilities",
-        title: "Skills",
-        subtitle: "Technical and collaboration skills."
-      },
-      "journey-header": {
-        eyebrow: "Growth timeline",
-        title: "Journey",
-        subtitle: "Academic and project milestones."
-      }
-    };
-    const resolvedSection = section || sectionDefaults[containerId];
-    if (!resolvedSection) return;
+    if (!section || !section.label) return;
 
-    const labelMap = {
-      "projects-header": "01 - Selected Projects",
-      "skills-header": "02 - Skills",
-      "journey-header": "03 - Journey"
-    };
-    const headingText = containerId === "projects-header" ? "Selected Projects" : resolvedSection.title;
-    const label = createElement("p", {
-      className: "eyebrow",
-      text: labelMap[containerId] || resolvedSection.eyebrow
-    });
-    const headerContent = [label];
-
-    if (containerId !== "projects-header") {
-      headerContent.push(
-        createElement("span", { className: "sr-only", text: headingText }),
-        createElement("span", { className: "sr-only", text: resolvedSection.subtitle })
-      );
-    }
-
-    container.replaceChildren(...headerContent);
+    container.replaceChildren(
+      createElement("p", {
+        className: "eyebrow",
+        text: section.label
+      })
+    );
   }
 
+  // Renders the hero text and highlight counters from data.js.
   function renderHero() {
     const copy = document.getElementById("hero-copy");
     const board = document.getElementById("hero-board");
@@ -122,6 +85,7 @@
     }
   }
 
+  // Renders technical and soft skills into their two-column section layout.
   function renderSkills() {
     const grid = document.getElementById("skills-grid");
     if (!grid) return;
@@ -141,12 +105,14 @@
 
     const technicalGroups = createElement("div", { className: "technical-skills-grid" });
     skills.technical.groups.forEach((group) => {
+      // Each technical group becomes a titled list of skill tokens.
       const groupCard = createElement("section", { className: "technical-skill-group" });
       const list = createElement("ul", { className: "skill-token-list" });
 
       group.items.forEach((item) => {
+        // Each skill token optionally shows a Devicon icon before the skill name.
         const token = createElement("li", {
-          className: item.icon || item.logoSrc ? "skill-token has-logo" : "skill-token"
+          className: "skill-token"
         });
 
         if (item.icon) {
@@ -154,19 +120,6 @@
             createElement("i", {
               className: item.icon,
               attrs: { "aria-hidden": "true" }
-            })
-          );
-        } else if (item.logoSrc) {
-          token.appendChild(
-            createElement("img", {
-              className: "skill-logo-img",
-              attrs: {
-                src: item.logoSrc,
-                alt: "",
-                loading: "lazy",
-                decoding: "async",
-                "aria-hidden": "true"
-              }
             })
           );
         }
@@ -193,6 +146,7 @@
 
     const softGrid = createElement("div", { className: "soft-skills-grid" });
     skills.soft.items.forEach((item) => {
+      // Each soft skill becomes a simple title and description card.
       const card = createElement("section", { className: "soft-skill-card" });
       card.append(
         createElement("h4", { text: item.title }),
@@ -205,58 +159,14 @@
     grid.replaceChildren(technicalPanel, softPanel);
   }
 
+  // Renders the academic/project journey timeline from data.js.
   function renderJourney() {
     const timeline = document.getElementById("timeline");
     if (!timeline) return;
 
-    const highlightTerms = [
-      "COMS1 Tutor",
-      "Oportunet",
-      "Country Explorer",
-      "UniApply SA",
-      "FoodBridge SA",
-      "Donation Mobile App",
-      "Wits AI Snake Competition",
-      "Sudoku Project",
-      "Finding the Shortest Path Project",
-      "Grade 12",
-      "Umalusi Certificate",
-      "85% Average",
-      "100% in Mathematics",
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "Java",
-      "MySQL",
-      "teamwork",
-      "collaboration",
-      "problem solving",
-      "adaptability"
-    ].sort((a, b) => b.length - a.length);
-
-    function escapeRegExp(value) {
-      return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    }
-
-    function appendHighlightedText(element, text) {
-      const pattern = new RegExp(`(${highlightTerms.map(escapeRegExp).join("|")})`, "gi");
-      const parts = text.split(pattern).filter(Boolean);
-
-      parts.forEach((part) => {
-        const isHighlighted = highlightTerms.some(
-          (term) => term.toLowerCase() === part.toLowerCase()
-        );
-
-        element.appendChild(
-          isHighlighted
-            ? createElement("strong", { className: "timeline-keyword", text: part })
-            : document.createTextNode(part)
-        );
-      });
-    }
-
     timeline.replaceChildren();
     data.journey.forEach((entry, index) => {
+      // Alternate side classes are kept for responsive timeline styling.
       const item = createElement("article", {
         className: `timeline-item reveal-item ${index % 2 === 0 ? "is-right" : "is-left"}`,
         attrs: { "aria-label": `${entry.year} ${entry.stage}` }
@@ -271,14 +181,13 @@
       );
 
       entry.items.forEach((text) => {
-        const listItem = createElement("li");
-        appendHighlightedText(listItem, text);
-        list.appendChild(listItem);
+        list.appendChild(createElement("li", { text }));
       });
 
       content.append(header, list);
 
       if ((entry.skills || []).length) {
+        // Add compact skill tags when a journey entry lists skills gained.
         const skills = createElement("ul", {
           className: "timeline-skill-tags",
           attrs: { "aria-label": `${entry.year} skills gained` }
@@ -296,12 +205,14 @@
     });
   }
 
+  // Renders the "Why Me" service/value cards with inline SVG icons.
   function renderService() {
     const container = document.getElementById("why-hire-content");
     if (!container) return;
 
     const section = data.service || data.hireMe;
     if (!section) return;
+    // Local icon map keeps decorative SVGs out of data.js while still data-driving the card choice.
     const iconMap = {
       code:
         '<svg viewBox="0 0 24 24"><path d="m8 9-4 3 4 3"></path><path d="m16 9 4 3-4 3"></path><path d="m14 5-4 14"></path></svg>',
@@ -320,6 +231,7 @@
     const reasons = createElement("div", { className: "why-hire-grid" });
 
     (section.reasons || []).forEach((reason) => {
+      // Each reason card displays an icon, title, and short value statement.
       const card = createElement("article", { className: "why-card reveal-item" });
       card.append(
         createElement("span", {
@@ -335,18 +247,16 @@
 
     const label = createElement("div", { className: "professional-section-label" });
     label.appendChild(
-      createElement("p", { className: "professional-label-text", text: `04 - ${section.title || "Service"}` })
+      createElement("p", { className: "professional-label-text", text: data.sections.service.label })
     );
 
     container.replaceChildren(
       label,
-      createElement("p", { className: "eyebrow why-kicker", text: section.eyebrow }),
-      createElement("h2", { className: "section-title why-title", text: section.title }),
-      createElement("p", { className: "why-subtitle", text: section.subtitle }),
       reasons
     );
   }
 
+  // Renders the about section copy, profile image, university mark, facts, and tags.
   function renderAbout() {
     const container = document.getElementById("about-content");
     if (!container) return;
@@ -354,7 +264,7 @@
     const about = data.about;
     const label = createElement("div", { className: "professional-section-label" });
     label.appendChild(
-      createElement("p", { className: "professional-label-text", text: "05 - About" })
+      createElement("p", { className: "professional-label-text", text: data.sections.about.label })
     );
 
     const grid = createElement("div", { className: "about-grid" });
@@ -366,6 +276,7 @@
     );
 
     about.paragraphs.forEach((paragraph) => {
+      // Preserve paragraph order exactly as written in data.js.
       copy.appendChild(createElement("p", { text: paragraph }));
     });
 
@@ -404,6 +315,7 @@
 
     const facts = createElement("div", { className: "about-facts" });
     about.profile.facts.forEach((fact) => {
+      // Facts are rendered as label/value rows in the profile panel.
       const item = createElement("div");
       const value = createElement("strong", { text: fact.value });
 
@@ -413,6 +325,7 @@
 
     const tags = createElement("div", { className: "about-tags" });
     about.profile.tags.forEach((tag) => {
+      // Tags are small descriptive chips below the profile facts.
       tags.appendChild(createElement("span", { text: tag }));
     });
 
@@ -428,12 +341,14 @@
     container.replaceChildren(label, grid);
   }
 
+  // Renders the contact call-to-action, social links, quick facts, and footer.
   function renderContact() {
     const container = document.getElementById("contact-content");
     const footer = document.getElementById("site-footer");
     if (!container || !footer) return;
 
     const contact = data.contact;
+    // Local icon map provides all decorative contact and social icons.
     const iconMap = {
       email:
         '<svg viewBox="0 0 24 24"><path d="M4 6.5h16v11H4v-11Z"></path><path d="m4 7 8 6 8-6"></path></svg>',
@@ -457,6 +372,7 @@
         '<svg viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>'
     };
 
+    // Creates a decorative SVG wrapper for contact buttons and contact facts.
     function createContactIcon(name, className = "contact-icon") {
       return createElement("span", {
         className,
@@ -467,6 +383,7 @@
 
     const links = createElement("div", { className: "contact-links" });
     (contact.actions || []).forEach((action) => {
+      // Choose the button icon from the link protocol.
       const icon = action.href.startsWith("mailto:")
         ? "email"
         : action.href.startsWith("tel:")
@@ -482,6 +399,7 @@
     });
 
     if (contact.socials && contact.socials.length) {
+      // Social links sit beside the primary email action.
       const socialLinks = createElement("div", {
         className: "contact-social-links",
         attrs: { "aria-label": "Social links" }
@@ -508,6 +426,7 @@
       links.appendChild(socialLinks);
     }
 
+    // Convert the details array into labeled cards, adding links where useful.
     const [name, role, university, email, phone, location] = contact.details || [];
     const contactCards = [
       name ? { label: "Name", value: name, icon: "user" } : null,
@@ -527,6 +446,7 @@
 
     const details = createElement("address", { className: "contact-details" });
     contactCards.forEach((item) => {
+      // Linked detail cards use anchors; static facts use divs.
       const tag = item.href ? "a" : "div";
       const attrs = item.href
         ? item.external
@@ -548,35 +468,28 @@
 
     const intro = createElement("div", { className: "contact-intro" });
     intro.append(
-      createElement("p", { className: "eyebrow", text: contact.eyebrow }),
       createElement("h2", { className: "section-title", text: contact.title }),
       createElement("p", { className: "contact-subtitle", text: contact.subtitle }),
       links
     );
 
-    const meta = createElement("div", { className: "contact-meta" });
-    meta.append(
-      createElement("p", { className: "contact-meta-kicker", text: "Availability" }),
-      createElement("p", {
-        text: "Open to graduate software engineering roles, internships, full stack work, and AI-focused project teams."
-      })
-    );
-
     const panel = createElement("div", { className: "contact-panel" });
-    panel.append(intro, details, meta);
+    panel.append(intro, details);
     const label = createElement("div", { className: "professional-section-label" });
     label.appendChild(
-      createElement("p", { className: "professional-label-text", text: "06 - Contact" })
+      createElement("p", { className: "professional-label-text", text: data.sections.contact.label })
     );
     container.replaceChildren(label, panel);
 
     footer.textContent = contact.footer;
   }
 
+  // Shows the fixed navigation only after the user scrolls away from the hero top.
   function initSiteNav() {
     const nav = document.querySelector(".site-nav");
     if (!nav) return;
 
+    // Toggle the nav's visible class based on scroll position.
     const updateNavVisibility = () => {
       nav.classList.toggle("is-visible", window.scrollY > 80);
     };
@@ -585,12 +498,13 @@
     window.addEventListener("scroll", updateNavVisibility, { passive: true });
   }
 
+  // Render all dynamic sections after the base HTML and data have loaded.
   document.addEventListener("DOMContentLoaded", () => {
     initSiteNav();
     renderHero();
-    renderSectionHeader("projects-header", data.sections && data.sections.projects);
-    renderSectionHeader("skills-header", data.sections && data.sections.skills);
-    renderSectionHeader("journey-header", data.sections && data.sections.journey);
+    renderSectionHeader("projects-header", data.sections.projects);
+    renderSectionHeader("skills-header", data.sections.skills);
+    renderSectionHeader("journey-header", data.sections.journey);
     renderSkills();
     renderJourney();
     renderService();

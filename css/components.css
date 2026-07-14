@@ -1,3 +1,4 @@
+/* Fixed navigation that appears after scrolling away from the hero. */
 .site-nav {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -16,6 +17,7 @@
   transition: opacity 220ms ease, transform 220ms ease, box-shadow 180ms ease;
 }
 
+/* Visible state for the fixed navigation. */
 .site-nav.is-visible,
 .site-nav:focus-within {
   opacity: 1;
@@ -23,6 +25,7 @@
   transform: translateY(0);
 }
 
+/* Shared link styling inside the fixed navigation. */
 .site-nav a {
   min-height: 44px;
   display: inline-flex;
@@ -35,11 +38,13 @@
   transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
+/* Fixed navigation brand layout. */
 .site-nav-brand {
   gap: 0.72rem;
   white-space: nowrap;
 }
 
+/* Shared logo dimensions for fixed and hero navigation. */
 .site-nav-brand img,
 .hero-topbrand img {
   display: block;
@@ -49,6 +54,7 @@
   object-position: left center;
 }
 
+/* Fixed navigation brand text. */
 .site-nav-brand strong {
   color: #061525;
   font-family: var(--font-display);
@@ -56,6 +62,7 @@
   font-weight: 500;
 }
 
+/* Link row layout for fixed and hero navigation. */
 .site-nav-links,
 .hero-toplinks {
   display: flex;
@@ -65,6 +72,7 @@
   min-width: 0;
 }
 
+/* Shared navigation link hit area and typography. */
 .site-nav-links a,
 .hero-toplinks a {
   min-height: 44px;
@@ -81,16 +89,19 @@
   transition: color 180ms ease, background 180ms ease;
 }
 
+/* Navigation hover state. */
 .site-nav-links a:hover,
 .hero-toplinks a:hover {
   background: #fff8e7;
   color: var(--color-rust-dark);
 }
 
+/* Keep the hero navigation hover subtle. */
 .hero-toplinks a:hover {
   background: transparent;
 }
 
+/* Navigation bar that sits directly on the hero section. */
 .hero-topbar {
   display: flex;
   align-items: center;
@@ -105,6 +116,7 @@
   backdrop-filter: none;
 }
 
+/* Hero navigation brand link. */
 .hero-topbrand {
   min-height: 44px;
   display: inline-flex;
@@ -115,12 +127,14 @@
   white-space: nowrap;
 }
 
+/* Hero navigation brand text. */
 .hero-topbrand strong {
   font-family: var(--font-display);
   font-size: 0.96rem;
   font-weight: 500;
 }
 
+/* Reusable small uppercase label. */
 .eyebrow {
   margin: 0 0 0.9rem;
   color: var(--color-rust);
@@ -130,8 +144,7 @@
   text-transform: uppercase;
 }
 
-.btn-primary,
-.btn-secondary,
+/* Contact button base shape and typography. */
 .contact-btn {
   display: inline-flex;
   align-items: center;
@@ -145,32 +158,33 @@
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
-.btn-primary,
+/* Primary contact button color. */
 .contact-btn {
   background: var(--color-charcoal);
   color: #ffffff;
 }
 
-.btn-primary:hover,
+/* Primary contact button hover state. */
 .contact-btn:hover {
   background: #2c2a27;
   transform: translateY(-2px);
 }
 
-.btn-secondary,
+/* Secondary contact button variant, kept for non-primary actions. */
 .contact-btn.secondary {
   border: 1px solid var(--color-line);
   background: transparent;
   color: var(--color-ink);
 }
 
-.btn-secondary:hover,
+/* Secondary contact button hover state. */
 .contact-btn.secondary:hover {
   border-color: var(--color-rust);
   color: var(--color-rust-dark);
   transform: translateY(-2px);
 }
 
+/* Hero highlight statistic grid. */
 .hero-highlights {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -180,16 +194,19 @@
   list-style: none;
 }
 
+/* Individual hero highlight item. */
 .hero-highlights li {
   border-top: 1px solid var(--color-line);
   padding-top: 0.85rem;
 }
 
+/* Stack the hero highlight value and label. */
 .hero-highlights strong,
 .hero-highlights span {
   display: block;
 }
 
+/* Hero highlight value typography. */
 .hero-highlights strong {
   display: flex;
   align-items: center;
@@ -201,6 +218,7 @@
   line-height: 1.2;
 }
 
+/* Hero highlight label typography. */
 .hero-highlights span {
   margin-top: 0.25rem;
   color: var(--color-muted);
@@ -210,40 +228,13 @@
   line-height: 1.35;
 }
 
-.hero-highlight-rating {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.08rem;
-  margin: 0 !important;
-}
-
-.hero-highlight-rating .rating-star {
-  width: 17px;
-  height: 17px;
-}
-
-.hero-showcase {
-  position: relative;
-  width: min(100%, 440px);
-  min-height: 430px;
-}
-
+/* Hide the optional hero visual area when it is empty or hidden. */
 .hero-image-container:empty,
 .hero-image-container[hidden] {
   display: none;
 }
 
-.hero-showcase-tile {
-  position: absolute;
-  overflow: hidden;
-  border: 1px solid rgba(22, 26, 31, 0.1);
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: var(--shadow-md);
-}
-
-.hero-showcase-tile img,
-.card-media img,
+/* Shared project image sizing. */
 .project-visual img {
   width: 100%;
   height: 100%;
@@ -251,131 +242,7 @@
   object-position: top center;
 }
 
-.hero-showcase .tile-1 {
-  top: 0;
-  right: 0;
-  width: 76%;
-  aspect-ratio: 16 / 10;
-}
-
-.hero-showcase .tile-2 {
-  top: 34%;
-  left: 0;
-  z-index: 2;
-  width: 58%;
-  aspect-ratio: 4 / 3;
-}
-
-.hero-showcase .tile-3 {
-  right: 5%;
-  bottom: 0;
-  width: 64%;
-  aspect-ratio: 16 / 10;
-}
-
-.hero-showcase .tile-4 {
-  left: 10%;
-  top: 10%;
-  width: 34%;
-  aspect-ratio: 1 / 1;
-}
-
-.rating-star {
-  display: inline-flex;
-  width: 27px;
-  height: 27px;
-  color: #ff7119;
-}
-
-.rating-star svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.2;
-  stroke-linejoin: round;
-}
-
-.rating-star.is-filled svg {
-  fill: currentColor;
-}
-
-.slider-slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #ffffff;
-  color: inherit;
-  padding: 0;
-  cursor: pointer;
-  overflow: hidden;
-  text-decoration: none;
-  transition: transform 520ms ease;
-}
-
-.slider-slide:focus-visible {
-  outline: 3px solid var(--color-rust);
-  outline-offset: -5px;
-}
-
-.slider-media {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #ffffff;
-}
-
-.slider-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.carousel-controls {
-  position: absolute;
-  left: 50%;
-  bottom: 0.45rem;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  min-height: 36px;
-  transform: translateX(-50%);
-}
-
-.carousel-dot {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  background: transparent;
-  padding: 0;
-}
-
-.carousel-dot::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  border-radius: var(--radius-pill);
-  background: rgba(79, 95, 115, 0.35);
-  transform: translate(-50%, -50%);
-  transition: transform 180ms ease, background 180ms ease;
-}
-
-.carousel-dot.is-active::before,
-.carousel-dot:hover::before {
-  background: #0b2f57;
-  transform: translate(-50%, -50%) scale(1.35);
-}
-
+/* Baseline project card shell before the professional override layer. */
 .static-card {
   --theme: #0b2f57;
   --card-navy: #0b2f57;
@@ -402,15 +269,18 @@
   transform: translateY(-2px);
 }
 
+/* Keyboard focus state for project cards. */
 .static-card:focus-visible {
   outline: 3px solid var(--card-amber);
   outline-offset: 5px;
 }
 
+/* Baseline image zoom on card hover. */
 .static-card:hover .project-visual img {
   transform: scale(1.035);
 }
 
+/* Baseline project card text area. */
 .static-card-body {
   display: flex;
   flex: 1;
@@ -419,6 +289,7 @@
   padding: 1.05rem 1.15rem 1.1rem;
 }
 
+/* Neutralize old theme classes so legacy class names do not affect the final palette. */
 .theme-moss,
 .theme-forest,
 .theme-rust,
@@ -443,6 +314,7 @@
   transition: transform 260ms ease;
 }
 
+/* Placeholder bars shown when a project card has no image. */
 .project-visual::before,
 .project-visual::after {
   content: "";
@@ -451,11 +323,13 @@
   background: color-mix(in srgb, var(--card-navy) 16%, white);
 }
 
+/* Hide placeholder bars when real project images are present. */
 .project-visual.has-image::before,
 .project-visual.has-image::after {
   display: none;
 }
 
+/* First placeholder bar. */
 .project-visual::before {
   left: 1rem;
   top: 1rem;
@@ -463,6 +337,7 @@
   height: 10px;
 }
 
+/* Second placeholder bar. */
 .project-visual::after {
   left: 1rem;
   top: 2.2rem;
@@ -488,19 +363,14 @@
   gap: 0.8rem;
 }
 
+/* Baseline title and status grouping. */
 .card-title-main {
   display: flex;
   align-items: center;
   min-width: 0;
 }
 
-.project-link-icon {
-  display: inline-grid;
-  place-items: center;
-  flex: 0 0 auto;
-  color: var(--theme);
-}
-
+/* Baseline project status text. */
 .card-status-badge {
   flex: 0 0 auto;
   border-radius: var(--radius-pill);
@@ -513,15 +383,7 @@
   white-space: nowrap;
 }
 
-.project-kicker {
-  margin: 0.52rem 0 1rem;
-  color: var(--card-amber);
-  font-size: 0.8rem;
-  font-weight: 600;
-  line-height: 1.25;
-  text-transform: uppercase;
-}
-
+/* Baseline project description row. */
 .project-status-line {
   display: flex;
   align-items: center;
@@ -533,31 +395,14 @@
   line-height: 1.35;
 }
 
-.status-dot {
-  width: 5px;
-  height: 5px;
-  flex: 0 0 auto;
-  border-radius: var(--radius-pill);
-  background: #9aa7b5;
-  box-shadow: none;
-}
-
-.status-dot.success {
-  background: #9aa7b5;
-  box-shadow: none;
-}
-
-.status-dot.warning {
-  background: #9aa7b5;
-  box-shadow: none;
-}
-
+/* Baseline project tech tag row. */
 .card-detail-row {
   display: grid;
   gap: 0.3rem;
   margin-top: 0.48rem;
 }
 
+/* Baseline individual project tech tag. */
 .card-detail-item {
   display: flex;
   align-items: center;
@@ -568,6 +413,7 @@
   line-height: 1.35;
 }
 
+/* Baseline marker dot for tech tags. */
 .card-detail-item::before {
   content: "";
   width: 5px;
@@ -577,6 +423,7 @@
   flex: 0 0 auto;
 }
 
+/* Baseline visual affordance at the bottom of a project card. */
 .card-link {
   min-height: 44px;
   display: inline-flex;
@@ -597,31 +444,13 @@
   transition: color 180ms ease;
 }
 
-.card-link-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.42rem;
-}
-
-.project-link-icon {
-  width: 18px;
-  height: 18px;
-  border-radius: 0;
-  background: transparent;
-  color: #4f5f73;
-}
-
-.project-link-icon svg {
-  width: 15px;
-  height: 15px;
-  stroke-width: 1.8;
-}
-
+/* Arrow motion on card hover. */
 .static-card:hover .card-link .arrow-icon,
 .card-link:hover .arrow-icon {
   transform: translateX(4px);
 }
 
+/* Arrow SVG sizing. */
 .arrow-icon svg {
   width: 16px;
   height: 16px;
@@ -634,11 +463,13 @@
   transition: transform 180ms ease;
 }
 
+/* Baseline skills section background. */
 .skills-section {
   background:
     linear-gradient(180deg, #ffffff 0%, #f8fbff 52%, #ffffff 100%);
 }
 
+/* Baseline skills panel card. */
 .skills-panel {
   border: 1px solid #dce8f2;
   border-radius: var(--radius-sm);
@@ -647,14 +478,17 @@
   padding: clamp(1.1rem, 3vw, 1.6rem);
 }
 
+/* Baseline accent for the technical skills panel. */
 .technical-skills-panel {
   border-top: 4px solid #0b2f57;
 }
 
+/* Baseline accent for the soft skills panel. */
 .soft-skills-panel {
   border-top: 4px solid var(--color-rust);
 }
 
+/* Baseline skills panel heading layout. */
 .skills-panel-header {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -663,6 +497,7 @@
   margin-bottom: 1.25rem;
 }
 
+/* Number badge inside each skills panel. */
 .skills-panel-kicker {
   grid-row: span 2;
   display: grid;
@@ -678,10 +513,12 @@
   line-height: 1;
 }
 
+/* Soft skills panel uses the rust accent for its badge. */
 .soft-skills-panel .skills-panel-kicker {
   background: var(--color-rust);
 }
 
+/* Skills panel title typography. */
 .skills-panel h3 {
   margin: 0;
   color: #061525;
@@ -690,12 +527,14 @@
   line-height: 1.15;
 }
 
+/* Skills panel subtitle text. */
 .skills-panel-header p:not(.skills-panel-kicker) {
   margin: 0;
   color: #536276;
   line-height: 1.65;
 }
 
+/* Baseline card for each technical skill category. */
 .technical-skill-group {
   border: 1px solid #e2eaf3;
   border-radius: var(--radius-sm);
@@ -703,6 +542,7 @@
   padding: 1rem;
 }
 
+/* Skill group and soft skill card headings. */
 .technical-skill-group h4,
 .soft-skill-card h4 {
   margin: 0 0 0.85rem;
@@ -712,6 +552,7 @@
   line-height: 1.25;
 }
 
+/* Baseline layout for skill tokens. */
 .skill-token-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
@@ -721,6 +562,7 @@
   list-style: none;
 }
 
+/* Baseline individual skill token. */
 .skill-token {
   min-height: 56px;
   display: flex;
@@ -737,14 +579,15 @@
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
+/* Baseline skill token hover state. */
 .skill-token:hover {
   border-color: rgba(11, 47, 87, 0.28);
   box-shadow: 0 10px 22px rgba(6, 21, 37, 0.08);
   transform: translateY(-1px);
 }
 
-.skill-token i,
-.skill-logo-img {
+/* Reserve space for Devicon icons in skill tokens. */
+.skill-token i {
   width: 30px;
   height: 30px;
   flex: 0 0 auto;
@@ -759,20 +602,7 @@
   text-align: center;
 }
 
-.skill-logo-img {
-  display: block;
-  object-fit: contain;
-}
-
-.skill-token:not(.has-logo)::before {
-  content: "";
-  width: 0.48rem;
-  height: 0.48rem;
-  border-radius: var(--radius-pill);
-  background: var(--color-rust);
-  flex: 0 0 auto;
-}
-
+/* Baseline soft skill card. */
 .soft-skill-card {
   min-height: 100%;
   border: 1px solid #e2eaf3;
@@ -781,10 +611,12 @@
   padding: 1rem;
 }
 
+/* Baseline soft skill heading spacing. */
 .soft-skill-card h4 {
   margin-bottom: 0.55rem;
 }
 
+/* Baseline soft skill description text. */
 .soft-skill-card p {
   margin: 0;
   color: #536276;
@@ -792,6 +624,7 @@
   line-height: 1.65;
 }
 
+/* Baseline timeline layout before professional overrides. */
 .timeline {
   position: relative;
   display: grid;
@@ -799,6 +632,7 @@
   padding: 0.25rem 0;
 }
 
+/* Baseline vertical timeline spine. */
 .timeline::before {
   content: "";
   position: absolute;
@@ -811,6 +645,7 @@
   transform: translateX(-50%);
 }
 
+/* Baseline timeline item row. */
 .timeline-item {
   position: relative;
   display: grid;
@@ -820,6 +655,7 @@
   padding: 0;
 }
 
+/* Baseline timeline dot marker. */
 .timeline-dot {
   position: relative;
   z-index: 1;
@@ -836,6 +672,7 @@
   box-shadow: 0 0 0 1px #dce8f2, 0 10px 20px rgba(6, 21, 37, 0.1);
 }
 
+/* Inner white dot for the timeline marker. */
 .timeline-dot::after {
   content: "";
   width: 6px;
@@ -844,6 +681,7 @@
   background: #ffffff;
 }
 
+/* Baseline timeline content card. */
 .timeline-content {
   position: relative;
   grid-column: 3;
@@ -857,6 +695,7 @@
   box-shadow: 0 16px 34px rgba(6, 21, 37, 0.07);
 }
 
+/* Baseline connector notch for right-side timeline cards. */
 .timeline-content::before {
   content: "";
   position: absolute;
@@ -870,10 +709,12 @@
   transform: rotate(45deg);
 }
 
+/* Move alternating timeline cards to the left column. */
 .timeline-item.is-left .timeline-content {
   grid-column: 1;
 }
 
+/* Flip the connector notch for left-side timeline cards. */
 .timeline-item.is-left .timeline-content::before {
   right: -9px;
   left: auto;
@@ -882,6 +723,7 @@
   border-right: 1px solid #dce8f2;
 }
 
+/* Timeline year/stage header row. */
 .timeline-card-header {
   display: flex;
   flex-wrap: wrap;
@@ -890,6 +732,7 @@
   margin-bottom: 0.9rem;
 }
 
+/* Timeline stage title typography. */
 .timeline-content h3 {
   margin: 0;
   color: #061525;
@@ -898,6 +741,7 @@
   line-height: 1.25;
 }
 
+/* Timeline year badge. */
 .timeline-year {
   display: inline-flex;
   align-items: center;
@@ -911,6 +755,7 @@
   line-height: 1.2;
 }
 
+/* Timeline bullet list layout. */
 .timeline-list {
   display: grid;
   gap: 0.52rem;
@@ -919,6 +764,7 @@
   list-style: none;
 }
 
+/* Individual timeline milestone. */
 .timeline-list li {
   position: relative;
   padding-left: 1rem;
@@ -927,6 +773,7 @@
   line-height: 1.62;
 }
 
+/* Custom bullet dot for timeline milestones. */
 .timeline-list li::before {
   content: "";
   position: absolute;
@@ -938,11 +785,7 @@
   background: #f5a400;
 }
 
-.timeline-keyword {
-  color: #061525;
-  font-weight: 900;
-}
-
+/* Timeline skill tag row. */
 .timeline-skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -963,26 +806,12 @@
   line-height: 1.2;
 }
 
+/* Baseline service section background. */
 .why-hire-section {
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
 }
 
-.why-kicker {
-  color: var(--color-rust);
-}
-
-.why-title {
-  color: #061525;
-}
-
-.why-subtitle {
-  max-width: 760px;
-  margin: 0 auto;
-  color: #536276;
-  font-size: clamp(1rem, 1.7vw, 1.22rem);
-  line-height: 1.75;
-}
-
+/* Baseline "Why Me" reason card. */
 .why-card {
   position: relative;
   min-height: 100%;
@@ -995,6 +824,7 @@
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
+/* Accent strip at the top of baseline service cards. */
 .why-card::before {
   content: "";
   position: absolute;
@@ -1008,18 +838,21 @@
   transition: left 220ms ease, right 220ms ease, opacity 220ms ease;
 }
 
+/* Baseline service card hover lift. */
 .why-card:hover {
   border-color: #f5a400;
   box-shadow: 0 20px 44px rgba(6, 21, 37, 0.11);
   transform: translateY(-5px);
 }
 
+/* Expand the service card accent strip on hover. */
 .why-card:hover::before {
   left: 0;
   right: 0;
   opacity: 1;
 }
 
+/* Baseline icon box inside service cards. */
 .why-icon {
   display: grid;
   place-items: center;
@@ -1032,6 +865,7 @@
   color: var(--color-rust-dark);
 }
 
+/* Decorative SVG sizing inside service icon boxes. */
 .why-icon svg {
   width: 25px;
   height: 25px;
@@ -1042,6 +876,7 @@
   stroke-width: 1.9;
 }
 
+/* Baseline service card heading. */
 .why-card h3 {
   margin: 0 0 0.7rem;
   color: #061525;
@@ -1050,24 +885,24 @@
   line-height: 1.28;
 }
 
+/* Baseline service card paragraph color and line height. */
 .why-card p {
   color: var(--color-muted);
   line-height: 1.72;
 }
 
+/* Baseline service card paragraph reset. */
 .why-card p {
   margin: 0;
   font-size: 0.96rem;
 }
 
+/* Baseline about section background. */
 .about-section {
   background: var(--color-plain);
 }
 
-.about-section-header {
-  max-width: 840px;
-}
-
+/* Small label above the about heading. */
 .section-kicker {
   margin: 0 0 1rem;
   color: var(--color-rust);
@@ -1077,6 +912,7 @@
   text-transform: uppercase;
 }
 
+/* Baseline framed surfaces for the about text and profile card. */
 .about-copy,
 .about-profile-card {
   border: 1px solid #e2e8f0;
@@ -1085,12 +921,14 @@
   box-shadow: 0 18px 42px rgba(22, 26, 31, 0.07);
 }
 
+/* Baseline about copy panel. */
 .about-copy {
   position: relative;
   overflow: hidden;
   padding: clamp(1.5rem, 4vw, 2.65rem);
 }
 
+/* Decorative rule beneath the about intro heading. */
 .about-copy-rule {
   width: 44px;
   height: 4px;
@@ -1116,10 +954,12 @@
   line-height: 1.75;
 }
 
+/* Space consecutive about paragraphs. */
 .about-copy p + p {
   margin-top: 1.2rem;
 }
 
+/* Emphasized closing line in the about copy. */
 .about-closing {
   margin-top: 1.55rem !important;
   padding-left: 1rem;
@@ -1128,18 +968,21 @@
   font-weight: 800;
 }
 
+/* Baseline profile card shell. */
 .about-profile-card {
   overflow: hidden;
   padding: 0;
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
+/* Baseline profile card hover lift. */
 .about-profile-card:hover {
   transform: translateY(-6px);
   border-color: rgba(217, 119, 6, 0.55);
   box-shadow: 0 26px 58px rgba(22, 26, 31, 0.13);
 }
 
+/* Profile image frame. */
 .about-profile-media {
   position: relative;
   margin: 0;
@@ -1149,6 +992,7 @@
   overflow: hidden;
 }
 
+/* Decorative double bar over the profile image. */
 .about-profile-media::after {
   content: "";
   position: absolute;
@@ -1161,6 +1005,7 @@
   box-shadow: 64px 0 0 #ff7618;
 }
 
+/* Profile image fit and positioning. */
 .about-profile-media img {
   width: 100%;
   height: 100%;
@@ -1169,10 +1014,12 @@
   display: block;
 }
 
+/* Profile name and role area. */
 .about-profile-identity {
   padding: 1.45rem clamp(1.25rem, 3vw, 1.75rem) 1.15rem;
 }
 
+/* Profile name typography. */
 .about-profile-card h3 {
   margin: 0;
   color: #061426;
@@ -1181,6 +1028,7 @@
   line-height: 1.12;
 }
 
+/* Profile role line. */
 .about-role {
   margin: 0.55rem 0 0;
   color: #566274;
@@ -1189,6 +1037,7 @@
   line-height: 1.45;
 }
 
+/* University logo container. */
 .about-university-mark {
   margin: 0 clamp(1.25rem, 3vw, 1.75rem) 1.15rem;
   padding: 0.9rem 1rem;
@@ -1197,6 +1046,7 @@
   background: #ffffff;
 }
 
+/* University logo sizing. */
 .about-university-mark img {
   display: block;
   width: min(100%, 260px);
@@ -1206,6 +1056,7 @@
   object-position: left center;
 }
 
+/* Profile fact list grid. */
 .about-facts {
   display: grid;
   gap: 0.82rem;
@@ -1213,6 +1064,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* Individual profile fact card. */
 .about-facts div {
   padding: 0.95rem 1rem;
   border: 1px solid #e8edf3;
@@ -1220,6 +1072,7 @@
   background: #ffffff;
 }
 
+/* Profile fact label. */
 .about-facts span {
   display: block;
   margin-bottom: 0.25rem;
@@ -1230,6 +1083,7 @@
   text-transform: uppercase;
 }
 
+/* Profile fact value. */
 .about-facts strong {
   display: flex;
   align-items: center;
@@ -1240,6 +1094,7 @@
   line-height: 1.45;
 }
 
+/* Profile tag row. */
 .about-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1247,6 +1102,7 @@
   padding: 0 clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.75rem);
 }
 
+/* Individual profile tag. */
 .about-tags span {
   display: inline-flex;
   align-items: center;
@@ -1261,10 +1117,12 @@
   line-height: 1;
 }
 
+/* Baseline contact section background. */
 .contact-section {
   background: #f8fbff;
 }
 
+/* Baseline contact panel layout. */
 .contact-panel {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
@@ -1277,6 +1135,7 @@
   padding: clamp(1.25rem, 4vw, 2rem);
 }
 
+/* Baseline contact intro panel. */
 .contact-intro {
   display: flex;
   flex-direction: column;
@@ -1287,6 +1146,7 @@
   padding: clamp(1.35rem, 4vw, 2.35rem);
 }
 
+/* Contact eyebrow color on dark intro panel. */
 .contact-intro .eyebrow {
   color: #f2a900;
 }
@@ -1320,28 +1180,33 @@
   box-shadow: none;
 }
 
+/* Primary contact panel button color. */
 .contact-panel .contact-btn:not(.secondary) {
   background: #f2a900;
   color: #061525;
 }
 
+/* Primary contact panel button hover color. */
 .contact-panel .contact-btn:not(.secondary):hover {
   background: #ffbd24;
   color: #061525;
 }
 
+/* Secondary contact panel button color. */
 .contact-panel .contact-btn.secondary {
   border-color: rgba(255, 255, 255, 0.24);
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
 }
 
+/* Secondary contact panel button hover color. */
 .contact-panel .contact-btn.secondary:hover {
   border-color: #f2a900;
   color: #ffffff;
   background: rgba(242, 169, 0, 0.14);
 }
 
+/* Shared wrapper for contact button and contact fact icons. */
 .contact-btn-icon,
 .contact-btn-arrow,
 .contact-icon {
@@ -1350,6 +1215,7 @@
   flex: 0 0 auto;
 }
 
+/* Shared contact icon SVG sizing. */
 .contact-btn-icon svg,
 .contact-btn-arrow svg,
 .contact-icon svg {
@@ -1362,16 +1228,19 @@
   stroke-width: 1.9;
 }
 
+/* Arrow icon motion on contact buttons. */
 .contact-btn-arrow {
   opacity: 0.72;
   transition: transform 180ms ease, opacity 180ms ease;
 }
 
+/* Move the contact button arrow on hover. */
 .contact-panel .contact-btn:hover .contact-btn-arrow {
   opacity: 1;
   transform: translateX(3px);
 }
 
+/* Contact quick facts grid. */
 .contact-details {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1381,6 +1250,7 @@
   line-height: 1.5;
 }
 
+/* Individual contact fact card. */
 .contact-detail-card {
   min-height: 112px;
   display: flex;
@@ -1395,6 +1265,7 @@
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
+/* Hover state for linked contact fact cards. */
 .contact-detail-card.is-link:hover {
   border-color: rgba(217, 119, 6, 0.48);
   background: #ffffff;
@@ -1402,6 +1273,7 @@
   transform: translateY(-3px);
 }
 
+/* Icon box for contact fact cards. */
 .contact-icon {
   width: 42px;
   height: 42px;
@@ -1411,12 +1283,14 @@
   color: var(--color-rust-dark);
 }
 
+/* Text stack inside a contact fact card. */
 .contact-detail-text {
   min-width: 0;
   display: grid;
   gap: 0.28rem;
 }
 
+/* Label text for contact facts. */
 .contact-detail-label {
   color: #7d8794;
   font-size: 0.72rem;
@@ -1425,6 +1299,7 @@
   text-transform: uppercase;
 }
 
+/* Value text for contact facts. */
 .contact-detail-card strong {
   color: #061525;
   font-size: 0.98rem;
@@ -1433,49 +1308,20 @@
   overflow-wrap: anywhere;
 }
 
-.contact-meta {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 0.75rem 1rem;
-  align-items: center;
-  border: 1px solid #f0d38e;
-  border-radius: 18px;
-  background: #fffaf0;
-  padding: 1rem 1.1rem;
-}
-
-.contact-meta p {
-  margin: 0;
-  color: #5f6f82;
-  line-height: 1.65;
-}
-
-.contact-meta-kicker {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  border-radius: var(--radius-pill);
-  background: #f2a900;
-  color: #061525 !important;
-  padding: 0.4rem 0.78rem;
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
+/* Initial hidden state for scroll reveal animations. */
 .reveal-item {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 260ms ease, transform 260ms ease;
 }
 
+/* Visible state applied by animation.js after an item enters the viewport. */
 .reveal-item.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Tablet/mobile baseline adjustments for navigation, contact, and timeline sections. */
 @media (max-width: 768px) {
   .site-nav {
     grid-template-columns: 1fr;
@@ -1531,10 +1377,6 @@
     min-height: auto;
   }
 
-  .contact-meta {
-    grid-template-columns: 1fr;
-  }
-
   .timeline {
     gap: 0.85rem;
     padding-left: 0;
@@ -1574,6 +1416,7 @@
 
 }
 
+/* Small-phone baseline adjustments. */
 @media (max-width: 520px) {
   .contact-links {
     flex-direction: column;
@@ -1597,6 +1440,7 @@ main {
   font-family: var(--font-pro);
 }
 
+/* Utility class for screen-reader-only text. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1609,6 +1453,7 @@ main {
   border: 0;
 }
 
+/* Subtle texture overlay for the professional section background. */
 main::before {
   content: "";
   position: fixed;
@@ -1620,11 +1465,13 @@ main::before {
   background-size: 128px;
 }
 
+/* Keep main content above the fixed texture overlay. */
 main > * {
   position: relative;
   z-index: 1;
 }
 
+/* Shared final section frame, spacing, and max width. */
 main .projects-section,
 main .skills-section,
 main .journey-section,
@@ -1638,10 +1485,12 @@ main .contact-section {
   padding: clamp(5rem, 9vw, 7rem) clamp(1.5rem, 4vw, 3rem);
 }
 
+/* Projects starts directly after the hero, so it does not need a top divider. */
 main .projects-section {
   border-top: 0;
 }
 
+/* Final section label row with a horizontal divider line. */
 main .section-header,
 .professional-section-label {
   display: flex;
@@ -1652,6 +1501,7 @@ main .section-header,
   text-align: left;
 }
 
+/* Divider line that extends from section labels. */
 main .section-header::after,
 .professional-section-label::after {
   content: "";
@@ -1660,23 +1510,23 @@ main .section-header::after,
   background: var(--pro-border);
 }
 
+/* Final uppercase/monospace label system across sections and chips. */
 main .eyebrow,
 .professional-label-text,
 .section-kicker,
-.project-kicker,
-.card-status-badge,
+  .card-status-badge,
 .timeline-year,
 .timeline-skill-tags li,
 .skill-token,
 .contact-detail-label,
-.contact-meta-kicker,
-.about-facts span,
+  .about-facts span,
 .about-tags span {
   font-family: var(--font-mono);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
+/* Final section label typography. */
 main .eyebrow,
 .professional-label-text {
   margin: 0;
@@ -1687,6 +1537,7 @@ main .eyebrow,
   white-space: nowrap;
 }
 
+/* Final section title typography. */
 main .section-title {
   margin: 0;
   color: var(--pro-foreground);
@@ -1697,11 +1548,13 @@ main .section-title {
   letter-spacing: 0;
 }
 
+/* Optional muted emphasis inside section titles. */
 main .section-title em {
   color: var(--pro-muted-foreground);
   font-style: italic;
 }
 
+/* Optional final section subtitle style. */
 main .section-subtitle {
   max-width: 560px;
   margin: 1.25rem 0 0;
@@ -1710,10 +1563,7 @@ main .section-subtitle {
   line-height: 1.75;
 }
 
-main .featured-shell {
-  display: none;
-}
-
+/* Final project list is a single vertical stack of wide cards. */
 .static-projects-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1722,6 +1572,7 @@ main .featured-shell {
   margin: 0;
 }
 
+/* Final project card layout: text on the left, image on the right. */
 .static-card {
   --work-accent: var(--pro-accent);
   --work-hover: #eef4ff;
@@ -1741,6 +1592,7 @@ main .featured-shell {
   transition: background 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
 }
 
+/* Final project card hover state with bluish glow. */
 .static-card:hover {
   border-color: var(--work-hover-border);
   background: linear-gradient(135deg, var(--work-hover) 0%, #f8fbff 58%, var(--pro-background) 100%);
@@ -1748,12 +1600,14 @@ main .featured-shell {
   transform: none;
 }
 
+/* Final project card text column. */
 .static-card-body {
   min-height: 340px;
   padding: clamp(1.75rem, 3vw, 2.4rem);
   overflow: hidden;
 }
 
+/* Final project title row with completion date aligned right. */
 .card-title-row {
   align-items: flex-start;
   justify-content: space-between;
@@ -1761,10 +1615,12 @@ main .featured-shell {
   margin-bottom: 1.4rem;
 }
 
+/* Final title/status stack inside project cards. */
 .card-title-main {
   display: block;
 }
 
+/* Project number rendered from the data-index attribute. */
 .card-title-main::before {
   content: attr(data-index);
   display: block;
@@ -1775,6 +1631,7 @@ main .featured-shell {
   letter-spacing: 0;
 }
 
+/* Final project title typography. */
 .card-title {
   color: var(--pro-foreground);
   font-family: var(--font-display);
@@ -1784,6 +1641,7 @@ main .featured-shell {
   letter-spacing: 0;
 }
 
+/* Final status and date text treatment. */
 .card-status-badge,
 .card-date-badge {
   border: 0;
@@ -1799,6 +1657,7 @@ main .featured-shell {
   text-transform: uppercase;
 }
 
+/* Final project status/type line below title. */
 .card-status-badge {
   display: block;
   margin-top: 0.72rem;
@@ -1806,6 +1665,7 @@ main .featured-shell {
   overflow-wrap: anywhere;
 }
 
+/* Final project completion date in the top-right corner. */
 .card-date-badge {
   flex: 0 0 auto;
   padding-top: 0.05rem;
@@ -1813,14 +1673,7 @@ main .featured-shell {
   white-space: nowrap;
 }
 
-.project-kicker {
-  margin: 0 0 1.25rem;
-  color: var(--pro-muted-foreground);
-  font-size: 0.68rem;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
+/* Final project description with line clamp for consistent card heights. */
 .project-status-line {
   max-width: 420px;
   color: var(--pro-muted-foreground);
@@ -1833,10 +1686,7 @@ main .featured-shell {
   -webkit-line-clamp: 4;
 }
 
-.status-dot {
-  display: none;
-}
-
+/* Final project tech tag row. */
 .card-detail-row {
   display: flex;
   flex-wrap: wrap;
@@ -1845,6 +1695,7 @@ main .featured-shell {
   padding-top: 2rem;
 }
 
+/* Final project tech tag. */
 .card-detail-item {
   border: 1px solid var(--pro-border);
   color: var(--pro-muted-foreground);
@@ -1857,10 +1708,12 @@ main .featured-shell {
   text-transform: uppercase;
 }
 
+/* Remove the baseline dot marker from final tech tags. */
 .card-detail-item::before {
   display: none;
 }
 
+/* Final square arrow affordance in project cards. */
 .card-link {
   position: absolute;
   right: clamp(1.5rem, 3vw, 2rem);
@@ -1872,25 +1725,20 @@ main .featured-shell {
   padding: 0;
 }
 
-.card-link-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-}
-
+/* Final arrow icon color inherits from the square affordance. */
 .arrow-icon {
   margin: auto;
   color: currentColor;
 }
 
+/* Rotate final project/contact arrows into an external-link direction. */
 .arrow-icon svg {
   width: 15px;
   height: 15px;
   transform: rotate(-45deg);
 }
 
+/* Final project image frame on the right side of each project card. */
 .project-visual {
   position: relative;
   order: 2;
@@ -1905,6 +1753,7 @@ main .featured-shell {
   overflow: hidden;
 }
 
+/* Final project image fit and subtle saturation treatment. */
 .project-visual img {
   width: 100%;
   height: 100%;
@@ -1913,6 +1762,7 @@ main .featured-shell {
   object-position: center;
 }
 
+/* Track that slides between the first two project images. */
 .project-visual-track {
   position: absolute;
   inset: 0;
@@ -1923,11 +1773,13 @@ main .featured-shell {
   will-change: transform;
 }
 
+/* Individual frame inside the sliding project image track. */
 .project-visual-frame {
   flex: 0 0 calc(100% / 3);
   min-width: 0;
 }
 
+/* Premium sliding loop for project card image pairs. */
 @keyframes project-card-image-slide {
   0%,
   34% {
@@ -1945,6 +1797,7 @@ main .featured-shell {
   }
 }
 
+/* Disable image rotation for users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   .project-visual-track {
     animation: none !important;
@@ -1956,10 +1809,12 @@ main .featured-shell {
   }
 }
 
+/* Final cards keep the image stable on hover; only the border/glow changes. */
 .static-card:hover .project-visual img {
   transform: none;
 }
 
+/* Final skills section two-column grid. */
 .skills-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
@@ -1968,6 +1823,7 @@ main .featured-shell {
   margin: 0;
 }
 
+/* Final skills panels are unframed to match the professional reference. */
 .skills-panel {
   border: 0;
   border-radius: 0;
@@ -1976,11 +1832,13 @@ main .featured-shell {
   padding: 0;
 }
 
+/* Final skills panel header spacing. */
 .skills-panel-header {
   display: block;
   margin-bottom: 1.75rem;
 }
 
+/* Final skills panel number badge. */
 .skills-panel-kicker {
   display: inline-flex;
   width: auto;
@@ -1994,11 +1852,13 @@ main .featured-shell {
   font-size: 0.68rem;
 }
 
+/* Final soft skills badge uses the same neutral treatment. */
 .soft-skills-panel .skills-panel-kicker {
   background: transparent;
   color: var(--pro-muted-foreground);
 }
 
+/* Final skills panel title typography. */
 .skills-panel h3 {
   color: var(--pro-foreground);
   font-family: var(--font-display);
@@ -2007,6 +1867,7 @@ main .featured-shell {
   line-height: 1.12;
 }
 
+/* Final skills panel explanatory text. */
 .skills-panel-header p:not(.skills-panel-kicker) {
   max-width: 460px;
   margin-top: 1rem;
@@ -2014,6 +1875,7 @@ main .featured-shell {
   line-height: 1.75;
 }
 
+/* Final skill groups stack vertically within each skills column. */
 .technical-skills-grid,
 .soft-skills-grid {
   display: grid;
@@ -2021,6 +1883,7 @@ main .featured-shell {
   gap: 1.25rem;
 }
 
+/* Final skill group and soft skill card framing. */
 .technical-skill-group,
 .soft-skill-card {
   border: 1px solid var(--pro-border);
@@ -2029,6 +1892,7 @@ main .featured-shell {
   padding: 1.4rem;
 }
 
+/* Final skill group headings. */
 .technical-skill-group h4,
 .soft-skill-card h4 {
   color: var(--pro-foreground);
@@ -2036,12 +1900,14 @@ main .featured-shell {
   font-weight: 500;
 }
 
+/* Final skill token flow layout. */
 .skill-token-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
+/* Final individual skill token style. */
 .skill-token {
   min-height: 0;
   border: 1px solid var(--pro-border);
@@ -2053,6 +1919,7 @@ main .featured-shell {
   font-weight: 400;
 }
 
+/* Final hover state for skill and soft-skill cards. */
 .skill-token:hover,
 .soft-skill-card:hover {
   border-color: var(--pro-border-strong);
@@ -2060,19 +1927,21 @@ main .featured-shell {
   transform: none;
 }
 
-.skill-token i,
-.skill-logo-img {
+/* Final Devicon rendering style in skill tokens. */
+.skill-token i {
   width: 18px;
   height: 18px;
   font-size: 1.1rem;
 }
 
+/* Final soft skill paragraph style. */
 .soft-skill-card p {
   color: var(--pro-muted-foreground);
   font-size: 0.92rem;
   line-height: 1.75;
 }
 
+/* Final timeline becomes a two-column bordered grid. */
 .timeline {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2083,12 +1952,14 @@ main .featured-shell {
   padding: 0;
 }
 
+/* Hide baseline timeline spine and dot details in the final grid layout. */
 .timeline::before,
 .timeline-dot,
 .timeline-content::before {
   display: none;
 }
 
+/* Final timeline item cell borders. */
 .timeline-item,
 .timeline-item.is-left,
 .timeline-item.is-right {
@@ -2096,14 +1967,17 @@ main .featured-shell {
   border-bottom: 1px solid var(--pro-border);
 }
 
+/* Add center divider on odd timeline cells. */
 .timeline-item:nth-child(odd) {
   border-right: 1px solid var(--pro-border);
 }
 
+/* Remove bottom border from the last timeline row on desktop. */
 .timeline-item:nth-last-child(-n + 2) {
   border-bottom: 0;
 }
 
+/* Final timeline content cell reset. */
 .timeline-content,
 .timeline-item.is-left .timeline-content {
   display: block;
@@ -2114,11 +1988,13 @@ main .featured-shell {
   padding: clamp(2rem, 4vw, 2.5rem);
 }
 
+/* Final timeline header stack. */
 .timeline-card-header {
   display: block;
   margin-bottom: 1rem;
 }
 
+/* Final timeline year label. */
 .timeline-year {
   min-height: 0;
   border-radius: 0;
@@ -2129,6 +2005,7 @@ main .featured-shell {
   font-weight: 400;
 }
 
+/* Final timeline stage typography. */
 .timeline-content h3 {
   margin-top: 1rem;
   color: var(--pro-foreground);
@@ -2137,24 +2014,23 @@ main .featured-shell {
   font-weight: 500;
 }
 
+/* Final timeline list spacing. */
 .timeline-list {
   gap: 0.55rem;
 }
 
+/* Final timeline milestone text. */
 .timeline-list li {
   color: var(--pro-muted-foreground);
   font-size: 0.92rem;
 }
 
+/* Final timeline milestone bullet accent. */
 .timeline-list li::before {
   background: var(--pro-accent);
 }
 
-.timeline-keyword {
-  color: var(--pro-foreground);
-  font-weight: 500;
-}
-
+/* Final individual timeline skill tag. */
 .timeline-skill-tags li {
   border-color: var(--pro-border);
   border-radius: 0;
@@ -2164,17 +2040,13 @@ main .featured-shell {
   font-weight: 400;
 }
 
+/* Final service section alignment. */
 .why-hire-content {
   max-width: none;
   text-align: left;
 }
 
-.why-kicker,
-.why-title,
-.why-subtitle {
-  display: none;
-}
-
+/* Final service cards grid. */
 .why-hire-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2184,6 +2056,7 @@ main .featured-shell {
   border: 1px solid var(--pro-border);
 }
 
+/* Final service card cell. */
 .why-card {
   border: 0;
   border-right: 1px solid var(--pro-border);
@@ -2194,24 +2067,29 @@ main .featured-shell {
   padding: clamp(2rem, 4vw, 2.5rem);
 }
 
+/* Remove right border from the right column service cards. */
 .why-card:nth-child(2n) {
   border-right: 0;
 }
 
+/* Remove bottom border from the final service card row. */
 .why-card:nth-last-child(-n + 2) {
   border-bottom: 0;
 }
 
+/* Disable the baseline service-card accent strip. */
 .why-card::before {
   display: none;
 }
 
+/* Final service cards do not lift on hover. */
 .why-card:hover {
   border-color: var(--pro-border);
   box-shadow: none;
   transform: none;
 }
 
+/* Final service icon treatment. */
 .why-icon {
   width: auto;
   height: auto;
@@ -2222,12 +2100,14 @@ main .featured-shell {
   color: var(--pro-muted-foreground);
 }
 
+/* Final service icon SVG sizing. */
 .why-icon svg {
   width: 20px;
   height: 20px;
   stroke-width: 1.5;
 }
 
+/* Final service card title typography. */
 .why-card h3 {
   color: var(--pro-foreground);
   font-family: var(--font-display);
@@ -2235,27 +2115,27 @@ main .featured-shell {
   font-weight: 500;
 }
 
+/* Final service card description. */
 .why-card p {
   color: var(--pro-muted-foreground);
   font-size: 0.92rem;
 }
 
+/* Final containers span the professional section width. */
 .about-container,
 .contact-container,
 .site-footer {
   max-width: none;
 }
 
-.about-section-header {
-  display: none;
-}
-
+/* Final about grid places image/profile left and copy right on desktop. */
 .about-grid {
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   gap: clamp(2.5rem, 6vw, 5rem);
   margin-top: 0;
 }
 
+/* Final about surfaces are unframed. */
 .about-copy,
 .about-profile-card {
   border: 0;
@@ -2264,11 +2144,13 @@ main .featured-shell {
   box-shadow: none;
 }
 
+/* Final about copy ordering and padding. */
 .about-copy {
   order: 2;
   padding: 0;
 }
 
+/* Final about heading. */
 .about-copy h3 {
   color: var(--pro-foreground);
   font-family: var(--font-display);
@@ -2277,14 +2159,17 @@ main .featured-shell {
   line-height: 1.12;
 }
 
+/* Match the project image divider to the hover glow color. */
 .static-card:hover .project-visual {
   border-left-color: var(--work-hover-border);
 }
 
+/* Hide the baseline decorative rule in the final design. */
 .about-copy-rule {
   display: none;
 }
 
+/* Final about body copy. */
 .about-copy p {
   max-width: 560px;
   color: var(--pro-muted-foreground);
@@ -2292,6 +2177,7 @@ main .featured-shell {
   line-height: 1.78;
 }
 
+/* Final emphasized about closing statement. */
 .about-closing {
   max-width: 700px !important;
   margin-top: 3rem !important;
@@ -2306,26 +2192,31 @@ main .featured-shell {
   padding: 2rem 0 0;
 }
 
+/* Final profile card order. */
 .about-profile-card {
   order: 1;
 }
 
+/* Disable baseline profile-card hover effects in the final design. */
 .about-profile-card:hover {
   border-color: transparent;
   box-shadow: none;
   transform: none;
 }
 
+/* Final profile image frame. */
 .about-profile-media {
   aspect-ratio: 3 / 4;
   border: 1px solid var(--pro-border);
   background: var(--pro-muted);
 }
 
+/* Hide the baseline image decoration in the final design. */
 .about-profile-media::after {
   display: none;
 }
 
+/* Shared borders around profile info blocks. */
 .about-profile-identity,
 .about-university-mark,
 .about-facts,
@@ -2334,10 +2225,12 @@ main .featured-shell {
   border-right: 1px solid var(--pro-border);
 }
 
+/* Final profile identity padding. */
 .about-profile-identity {
   padding: 1.5rem 1.5rem 0;
 }
 
+/* Final profile name typography. */
 .about-profile-card h3 {
   color: var(--pro-foreground);
   font-family: var(--font-display);
@@ -2345,11 +2238,13 @@ main .featured-shell {
   font-weight: 500;
 }
 
+/* Final profile role typography. */
 .about-role {
   color: var(--pro-muted-foreground);
   font-weight: 400;
 }
 
+/* Final university logo block. */
 .about-university-mark {
   margin: 0;
   border-top: 0;
@@ -2359,12 +2254,14 @@ main .featured-shell {
   padding: 1.25rem 1.5rem;
 }
 
+/* Final profile fact list. */
 .about-facts {
   gap: 0;
   padding: 0 1.5rem;
   margin: 0;
 }
 
+/* Final profile fact row. */
 .about-facts div {
   border: 0;
   border-top: 1px solid var(--pro-border);
@@ -2373,24 +2270,28 @@ main .featured-shell {
   padding: 1rem 0;
 }
 
+/* Final profile fact label. */
 .about-facts span {
   color: var(--pro-muted-foreground);
   font-size: 0.62rem;
   font-weight: 400;
 }
 
+/* Final profile fact value. */
 .about-facts strong {
   color: var(--pro-foreground);
   font-size: 0.9rem;
   font-weight: 500;
 }
 
+/* Final profile tags wrapper. */
 .about-tags {
   border-bottom: 1px solid var(--pro-border);
   gap: 0.5rem;
   padding: 1.5rem;
 }
 
+/* Final profile tag chip. */
 .about-tags span {
   min-height: 0;
   border-color: var(--pro-border);
@@ -2401,10 +2302,12 @@ main .featured-shell {
   font-weight: 400;
 }
 
+/* Final contact section removes bottom padding so the footer sits close to it. */
 .contact-section {
   padding-bottom: 0 !important;
 }
 
+/* Final contact layout with intro on the left and quick facts on the right. */
 .contact-panel {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
@@ -2417,6 +2320,7 @@ main .featured-shell {
   padding: 0;
 }
 
+/* Final contact intro is unframed and transparent. */
 .contact-intro {
   display: block;
   border-radius: 0;
@@ -2424,10 +2328,7 @@ main .featured-shell {
   padding: 0;
 }
 
-.contact-intro .eyebrow {
-  display: none;
-}
-
+/* Final contact title typography. */
 .contact-intro .section-title {
   color: var(--pro-foreground);
   font-family: var(--font-display);
@@ -2436,12 +2337,14 @@ main .featured-shell {
   line-height: 1.05;
 }
 
+/* Final contact supporting paragraph. */
 .contact-subtitle {
   max-width: 470px;
   margin: 2rem 0 0;
   color: var(--pro-muted-foreground);
 }
 
+/* Final contact action stack. */
 .contact-links {
   flex-direction: column;
   align-items: flex-start;
@@ -2449,12 +2352,14 @@ main .featured-shell {
   margin-top: 2.5rem;
 }
 
+/* Final social link row. */
 .contact-social-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
+/* Square social icon button. */
 .contact-social-btn {
   width: 52px;
   height: 52px;
@@ -2467,41 +2372,48 @@ main .featured-shell {
   transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
 }
 
+/* Social icon button hover state. */
 .contact-social-btn:hover {
   border-color: var(--pro-border-strong);
   background: var(--pro-card);
   color: var(--pro-foreground);
 }
 
+/* Social icon sizing. */
 .contact-social-btn .contact-btn-icon svg {
   width: 19px;
   height: 19px;
 }
 
+/* Final contact button sizing. */
 .contact-panel .contact-btn {
   min-height: 52px;
   border-radius: 0;
   font-size: 0.9rem;
 }
 
+/* Final primary contact button. */
 .contact-panel .contact-btn:not(.secondary) {
   border-color: var(--pro-primary);
   background: var(--pro-primary);
   color: var(--pro-primary-foreground);
 }
 
+/* Final secondary contact button. */
 .contact-panel .contact-btn.secondary {
   border-color: var(--pro-border);
   background: transparent;
   color: var(--pro-muted-foreground);
 }
 
+/* Final secondary contact button hover state. */
 .contact-panel .contact-btn.secondary:hover {
   border-color: var(--pro-border-strong);
   background: transparent;
   color: var(--pro-foreground);
 }
 
+/* Final quick-facts panel. */
 .contact-details {
   grid-template-columns: 1fr;
   gap: 0;
@@ -2510,6 +2422,7 @@ main .featured-shell {
   padding: 2rem;
 }
 
+/* Generated "Quick Facts" label for the contact facts panel. */
 .contact-details::before {
   content: "Quick Facts";
   margin-bottom: 1.75rem;
@@ -2520,6 +2433,7 @@ main .featured-shell {
   text-transform: uppercase;
 }
 
+/* Final contact fact row. */
 .contact-detail-card {
   min-height: 0;
   display: block;
@@ -2529,11 +2443,13 @@ main .featured-shell {
   padding: 0 0 1.1rem;
 }
 
+/* Divider between stacked contact facts. */
 .contact-detail-card + .contact-detail-card {
   padding-top: 1.1rem;
   border-top: 1px solid var(--pro-border);
 }
 
+/* Disable baseline hover movement for final contact fact links. */
 .contact-detail-card.is-link:hover {
   border-color: var(--pro-border);
   background: transparent;
@@ -2541,30 +2457,31 @@ main .featured-shell {
   transform: none;
 }
 
+/* Hide baseline contact fact icons in the final quick-facts panel. */
 .contact-icon {
   display: none;
 }
 
+/* Final contact fact text stack. */
 .contact-detail-text {
   gap: 0.25rem;
 }
 
+/* Final contact fact label. */
 .contact-detail-label {
   color: var(--pro-muted-foreground);
   font-size: 0.62rem;
   font-weight: 400;
 }
 
+/* Final contact fact value. */
 .contact-detail-card strong {
   color: var(--pro-foreground);
   font-size: 0.92rem;
   font-weight: 400;
 }
 
-.contact-meta {
-  display: none;
-}
-
+/* Final footer typography and top divider. */
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -2580,9 +2497,9 @@ main .featured-shell {
   text-transform: uppercase;
 }
 
+/* Tablet adjustments for final project, skills, about, and contact grids. */
 @media (max-width: 980px) {
-  .static-card.is-featured,
-  .static-card.is-compact,
+  .static-card,
   .skills-grid,
   .about-grid,
   .contact-panel {
@@ -2607,6 +2524,7 @@ main .featured-shell {
   }
 }
 
+/* Mobile adjustments for final section labels, timeline, service grid, and contact panel. */
 @media (max-width: 768px) {
   main .section-header,
   .professional-section-label {

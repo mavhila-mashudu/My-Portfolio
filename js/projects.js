@@ -1,12 +1,16 @@
 (function () {
+  // Read the shared portfolio data prepared by data.js.
   const data = window.portfolioData;
 
+  // Stop project rendering if data.js is missing or failed to load.
   if (!data) {
     return;
   }
 
+  // Keep a local project list so the renderer can safely handle missing data.
   const projects = data.projects || [];
 
+  // Creates an element and applies optional class names, text, HTML, and attributes.
   function createElement(tag, options = {}) {
     const element = document.createElement(tag);
 
@@ -31,6 +35,7 @@
     return element;
   }
 
+  // Builds the diagonal arrow icon used in project card affordances.
   function createArrowIcon() {
     return createElement("span", {
       className: "arrow-icon",
@@ -39,19 +44,12 @@
     });
   }
 
-  function createProjectLinkIcon() {
-    return createElement("span", {
-      className: "project-link-icon",
-      attrs: { "aria-hidden": "true" },
-      html:
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 13h8"></path><path d="M8 17h5"></path></svg>'
-    });
-  }
-
+  // Gets the exact URL that a project card should open.
   function getProjectHref(project) {
     return project.projectLink || "#";
   }
 
+  // Builds accessible link attributes for project cards.
   function getProjectLinkAttrs(project, label) {
     const href = getProjectHref(project);
     const attrs = {
@@ -67,24 +65,12 @@
     return attrs;
   }
 
-  function getStatusTone(text = "") {
-    const normalized = text.toLowerCase();
-
-    if (normalized.includes("progress") || normalized.includes("development")) {
-      return "warning";
-    }
-
-    if (normalized.includes("complete")) {
-      return "success";
-    }
-
-    return "neutral";
-  }
-
+  // Returns the first project image so each card has a cover image.
   function getProjectCover(project) {
     return project.media && project.media.length ? project.media[0] : null;
   }
 
+  // Builds the project image area, including the two-image sliding track when available.
   function createProjectImage(project, className, options = {}) {
     const cover = getProjectCover(project);
     const isProjectCardImage = className === "project-visual";
@@ -97,6 +83,7 @@
     });
 
     if (cover && cardImages.length > 1) {
+      // Duplicate the first frame at the end so the CSS slide animation can loop smoothly.
       const track = createElement("div", { className: "project-visual-track" });
       const rotatingImages = [...cardImages, cardImages[0]];
 
@@ -131,58 +118,18 @@
     return wrapper;
   }
 
-  function createProjectAffordance(label) {
-    const labelElement = createElement("span", { className: "card-link-label" });
+  // Creates the small visual arrow affordance on each project card.
+  function createProjectAffordance() {
     const affordance = createElement("span", {
       className: "card-link",
       attrs: { "aria-hidden": "true" }
     });
 
-    labelElement.append(createProjectLinkIcon(), document.createTextNode(label));
-    affordance.append(labelElement, createArrowIcon());
+    affordance.appendChild(createArrowIcon());
     return affordance;
   }
 
-  function renderCarousel() {
-    const carousel = document.getElementById("carousel");
-    const controls = document.getElementById("carousel-controls");
-    if (!carousel || !controls) return;
-
-    carousel.replaceChildren();
-    controls.replaceChildren();
-
-    const featuredProjects = projects.filter((project) => Boolean(getProjectCover(project)));
-
-    featuredProjects.forEach((project, index) => {
-      const slide = createElement("a", {
-        className: "slider-slide",
-        attrs: {
-          ...getProjectLinkAttrs(project, "Open"),
-          "aria-hidden": index === 0 ? "false" : "true",
-          tabindex: index === 0 ? "0" : "-1"
-        }
-      });
-
-      slide.style.transform = `translateX(${index * 100}%)`;
-      slide.appendChild(createProjectImage(project, "slider-media", { loading: index === 0 ? "eager" : "lazy" }));
-
-      carousel.appendChild(slide);
-    });
-
-    featuredProjects.forEach((project, index) => {
-      controls.appendChild(
-        createElement("button", {
-          className: index === 0 ? "carousel-dot is-active" : "carousel-dot",
-          attrs: {
-            type: "button",
-            "data-slide-index": String(index),
-            "aria-label": `Show ${project.title}`
-          }
-        })
-      );
-    });
-  }
-
+  // Renders every project from data.js as a direct external/internal link card.
   function renderProjectGrid() {
     const grid = document.getElementById("projects-grid");
     if (!grid) return;
@@ -190,26 +137,27 @@
     grid.replaceChildren();
 
     projects.forEach((project, index) => {
-      const article = createElement("a", {
-        className: `static-card ${index < 2 ? "is-featured" : "is-compact"} reveal-item`,
+      // The whole card is the link, so clicks go straight to project.projectLink.
+      const card = createElement("a", {
+        className: "static-card reveal-item",
         attrs: {
           ...getProjectLinkAttrs(project, "Open")
         }
       });
       const body = createElement("div", { className: "static-card-body" });
       const titleRow = createElement("div", { className: "card-title-row" });
-      const statusText = project.cardFacts && project.cardFacts[1] || project.status || "";
       const titleMain = createElement("div", { className: "card-title-main" });
+      // Numbering is rendered with CSS from this data attribute.
       titleMain.dataset.index = String(index + 1).padStart(2, "0");
       const statusBadge = createElement("span", {
         className: "card-status-badge",
-        text: [project.status || statusText, project.kicker || project.cardFacts && project.cardFacts[0]]
+        text: [project.status, project.type]
           .filter(Boolean)
           .join(" | ")
       });
       const dateBadge = createElement("span", {
         className: "card-date-badge",
-        text: project.cardDate || project.meta && project.meta.Date || ""
+        text: project.cardDate || ""
       });
       const statusLine = createElement("div", { className: "project-status-line" });
       const detailRow = createElement("div", { className: "card-detail-row" });
@@ -225,11 +173,11 @@
       );
 
       statusLine.append(
-        createElement("span", { className: `status-dot ${getStatusTone(statusText)}` }),
         createElement("span", { text: project.description })
       );
 
-      (project.tech || project.cardFacts || []).slice(0, index < 2 ? 4 : 3).filter(Boolean).forEach((detail) => {
+      // Show fewer tech tags on lower-priority cards to keep each card compact.
+      (project.tech || []).slice(0, index < 2 ? 4 : 3).filter(Boolean).forEach((detail) => {
         detailRow.appendChild(createElement("span", { className: "card-detail-item", text: detail }));
       });
 
@@ -237,16 +185,16 @@
         titleRow,
         statusLine,
         detailRow,
-        createProjectAffordance("Open project")
+        createProjectAffordance()
       );
 
-      article.append(createProjectImage(project, "project-visual"), body);
-      grid.appendChild(article);
+      card.append(createProjectImage(project, "project-visual"), body);
+      grid.appendChild(card);
     });
   }
 
+  // Render project cards once the HTML container exists, then trigger reveal animations.
   document.addEventListener("DOMContentLoaded", () => {
-    renderCarousel();
     renderProjectGrid();
     document.dispatchEvent(new CustomEvent("portfolio:projects-ready"));
   });

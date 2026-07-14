@@ -1,38 +1,29 @@
 :root {
+  /* Core text, background, and divider colors used by the base layout. */
   --color-ink: #161a1f;
   --color-ink-2: #242424;
   --color-muted: #66717c;
   --color-muted-2: #7b8791;
   --color-line: #ded8d0;
-  --color-line-2: #ebe5dd;
 
   --color-hero: #f5f7fa;
   --color-surface: #ffffff;
   --color-plain: #ffffff;
   --color-soft: #f5f5f5;
-  --color-cream: #faf7f2;
-  --color-cream-2: #f1ece4;
 
-  --color-taupe: #a99786;
-  --color-taupe-dark: #7b6a5b;
-  --color-moss: #315b2c;
-  --color-forest: #143f24;
+  /* Accent colors used for focus states, hover states, and emphasis. */
   --color-rust: #d97706;
   --color-rust-dark: #9a4f05;
   --color-orange: var(--color-rust);
   --color-charcoal: #1b1b1b;
 
-  --theme-moss: var(--color-moss);
-  --theme-forest: var(--color-forest);
-  --theme-rust: var(--color-rust);
-  --theme-taupe: var(--color-taupe);
-  --theme-charcoal: var(--color-charcoal);
-
+  /* Font stacks loaded from index.html and reused across the portfolio. */
   --font-body: "Plus Jakarta Sans", Arial, sans-serif;
   --font-pro: "DM Sans", Arial, sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
   --font-mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
 
+  /* Professional portfolio theme tokens used by the final section styling. */
   --pro-background: #f8f7f4;
   --pro-foreground: #141210;
   --pro-card: #ffffff;
@@ -44,14 +35,11 @@
   --pro-primary: #141210;
   --pro-primary-foreground: #f8f7f4;
 
+  /* Shared shape tokens for cards, buttons, and pill-style labels. */
   --radius-sm: 8px;
-  --radius-md: 12px;
   --radius-pill: 999px;
 
-  --shadow-sm: 0 12px 28px rgba(22, 26, 31, 0.07);
-  --shadow-md: 0 24px 54px rgba(22, 26, 31, 0.14);
-  --shadow-lg: 0 34px 90px rgba(0, 0, 0, 0.28);
-
+  /* Shared layout sizing tokens for sections and page gutters. */
   --container: 1200px;
   --container-wide: 1240px;
   --section-padding: clamp(4.5rem, 8vw, 7rem);
